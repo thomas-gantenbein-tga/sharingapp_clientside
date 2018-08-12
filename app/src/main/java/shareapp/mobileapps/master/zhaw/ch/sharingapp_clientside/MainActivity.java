@@ -69,9 +69,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void serverCall() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        //10.0.2.2 points to "localhost" of the machine on which the emulator is running
-        //see https://developer.android.com/studio/run/emulator-networking
-        //our server: http://fabled-coder-210208.appspot.com/items
         StringRequest request = new StringRequest(Request.Method.GET,
                 "http://10.0.2.2:8080/items",
                 onPostsLoaded, onPostsError) {
