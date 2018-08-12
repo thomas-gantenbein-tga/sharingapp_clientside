@@ -6,3 +6,5 @@
 * Run with Google App Engine: Use URL http://fabled-coder-210208.appspot.com/items in servercall().
 * network_security_config.xml and android:networkSecurityConfig="@xml/network_security_config"
   in Manifest necessary to allow cleartext connections to localhost.
+* Check console output to see that name of one item owner and the HTTP response code are
+  printed (in the method onResponse(String response)).
