@@ -15,28 +15,30 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int networkResponseCode;
-
-    private final Response.Listener<String> onPostsLoaded =
-            new Response.Listener<String>() {
+    private final Response.Listener<NetworkResponse> onPostsLoaded =
+            new Response.Listener<NetworkResponse>() {
                 @Override
-                public void onResponse(String response) {
+                public void onResponse(NetworkResponse response) {
                     Gson gson = new Gson();
-                    Item[] itemList = gson.fromJson(response, Item[].class);
-                    Log.e("test", itemList[0].getOwnerId());
-                    Log.e("testHttpCode", String.valueOf(networkResponseCode));
+                    String stringResponse = NetworkResponseRequest.parseResponseToString(response);
+                    Item[] itemList = gson.fromJson(stringResponse, Item[].class);
+                    if (itemList != null) {
+                        Log.e("test", itemList[0].getOwnerId());
+                    }
+                    Log.e("testHttpCode", String.valueOf(response.statusCode));
+
                     /*
                     Better:
                     Type collectionType = new TypeToken<Collection<channelSearchEnum>>(){}.getType();
                     Collection<channelSearchEnum> enums = gson.fromJson(yourJson, collectionType);
                      */
                 }
+
 
             };
     private final Response.ErrorListener onPostsError =
@@ -69,18 +71,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void serverCall() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        StringRequest request = new StringRequest(Request.Method.GET,
-                "http://10.0.2.2:8080/items",
-                onPostsLoaded, onPostsError) {
-            @Override
-            protected Response<String> parseNetworkResponse(NetworkResponse response) {
-                if (response != null) {
-                    networkResponseCode = response.statusCode;
-                }
-                return super.parseNetworkResponse(response);
-            }
-        };
+        Request<NetworkResponse> request = new NetworkResponseRequest(Request.Method.GET, "http://10.0.2.2:8080/items", null, onPostsLoaded, onPostsError);
         requestQueue.add(request);
+        // if submitted item has an itemId, that itemId is ignored by the server
+        // itemId is set by the server
+        Item item = new Item("tgantenbein", "Super Teil", "Haushalt", "Ein wirklich super Teil", "Winterthur", "8408", "111");
+        Gson gson = new Gson();
+        String requestBody = gson.toJson(item, Item.class);
+        request = new NetworkResponseRequest(Request.Method.POST, "http://10.0.2.2:8080/items/add", requestBody, onPostsLoaded, onPostsError);
+        requestQueue.add(request);
+
     }
 
     @Override
