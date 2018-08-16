@@ -8,3 +8,4 @@
   in Manifest necessary to allow cleartext connections to localhost.
 * Check console output to see that name of one item owner and the HTTP response code are
   printed (in the method onResponse(String response)).
+* meine Zeile ...
