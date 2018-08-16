@@ -1,4 +1,4 @@
-package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside;
+package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model;
 
 import java.util.UUID;
 
