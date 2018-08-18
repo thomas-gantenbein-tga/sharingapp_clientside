@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(request);
         // if submitted item has an itemId, that itemId is ignored by the server
         // itemId is set by the server
-        Item item = new Item("tgantenbein", "Super Teil", "Haushalt", "Ein wirklich super Teil", "Winterthur", "8408", "111");
+        Item item = new Item("tgantenbein", "Super Teil", "Haushalt", "Ein wirklich super Teil", "Wülflingerstr. 212","Winterthur", "8408", "111");
         Gson gson = new Gson();
         String requestBody = gson.toJson(item, Item.class);
         request = new NetworkResponseRequest(Request.Method.POST, "http://10.0.2.2:8080/items/add", requestBody, onPostsLoaded, onPostsError);
