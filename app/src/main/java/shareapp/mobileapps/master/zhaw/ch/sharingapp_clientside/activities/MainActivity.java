@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements DataListener {
         dataService.deliverAllItems(this);
 
         //so was hier würde in einer eigenen Activity stehen, die ein Item speichert
-        Item item = new Item("tgantenbein", "Super Teil", "Haushalt", "Ein wirklich super Teil", "Winterthur", "8408", "111");
+        Item item = new Item("tgantenbein", "Super Teil", "Haushalt", "Ein wirklich super Teil", "Wässerwiesenstrasse 67a","Winterthur", "8408", "111");
         dataService.saveItem(item);
     }
 
