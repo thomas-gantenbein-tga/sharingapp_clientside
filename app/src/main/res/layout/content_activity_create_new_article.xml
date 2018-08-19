@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.MainActivity"
+    tools:showIn="@layout/activity_show_article_list">
+
+    <TextView
+        android:id="@+id/editTextTitleOfPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="neuen Artikel anlegen"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editTextArticleTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Artikel-Titel"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTitleOfPage"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <EditText
+        android:id="@+id/editTextArticleCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Artikel-Kategorie"
+        app:layout_constraintTop_toBottomOf="@+id/editTextArticleTitle" />
+
+    <EditText
+        android:id="@+id/editTextArticleDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Artikel-Beschreibung"
+        app:layout_constraintTop_toBottomOf="@+id/editTextArticleCategory" />
+
+    <EditText
+        android:id="@+id/editTextArticleAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Adresse"
+        app:layout_constraintTop_toBottomOf="@+id/editTextArticleDescription" />
+
+    <EditText
+        android:id="@+id/editTextArticleCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Ort"
+        app:layout_constraintTop_toBottomOf="@+id/editTextArticleAddress" />
+
+    <EditText
+        android:id="@+id/editTextArticleZipCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="PLZ"
+        app:layout_constraintTop_toBottomOf="@+id/editTextArticleCity" />
+
+    <EditText
+        android:id="@+id/editTextArticleTelephoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Telefon"
+        app:layout_constraintTop_toBottomOf="@+id/editTextArticleZipCode" />
+
+</android.support.constraint.ConstraintLayout>

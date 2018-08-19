@@ -1,7 +1,9 @@
-package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside;
+package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.activities;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.R;
 
 public class ShowArticleListActivity extends AppCompatActivity {
 
@@ -10,5 +12,4 @@ public class ShowArticleListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_article_list);
     }
-
 }

@@ -1,5 +1,6 @@
 package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -72,5 +73,15 @@ public class MainActivity extends AppCompatActivity implements DataListener {
         if (items != null) {
             Log.i("test", items[0].getOwnerId());
         }
+    }
+
+    public void showArticleList(View view) {
+        Intent intent = new Intent(this, ShowArticleListActivity.class);
+        startActivity(intent);
+    }
+
+    public void createNewArticle(View view) {
+        Intent intent = new Intent( this, CreateNewArticleActivity.class);
+        startActivity(intent);
     }
 }

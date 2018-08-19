@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ShowArticleListActivity">
+    tools:context=".activities.CreateNewArticleActivity">
 
-    <include layout="@layout/content_activity_show_article_list" />
+    <include layout="@layout/content_activity_create_new_article" />
 
 </android.support.constraint.ConstraintLayout>
