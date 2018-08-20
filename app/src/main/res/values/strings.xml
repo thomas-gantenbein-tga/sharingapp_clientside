@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">sharingapp_clientside</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="articleCategory">
+        <item>Auto</item>
+        <item>Garten</item>
+        <item>Küche</item>
+        <item>Werkstatt</item>
+    </string-array>
 </resources>
