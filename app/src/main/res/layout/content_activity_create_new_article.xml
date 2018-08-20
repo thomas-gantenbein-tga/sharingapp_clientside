@@ -34,6 +34,7 @@
         android:id="@+id/spinnerArticleCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
         android:ems="10"
         app:layout_constraintTop_toBottomOf="@+id/editTextArticleTitle" />
 
