@@ -25,15 +25,14 @@
         android:inputType="textPersonName"
         android:text="Artikel-Titel"
         app:layout_constraintTop_toBottomOf="@+id/editTextTitleOfPage"
+        app:layout_constraintLeft_toLeftOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
-    <EditText
-        android:id="@+id/editTextArticleCategory"
+    <Spinner
+        android:id="@+id/spinnerArticleCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Artikel-Kategorie"
         app:layout_constraintTop_toBottomOf="@+id/editTextArticleTitle" />
 
     <EditText
@@ -43,7 +42,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Artikel-Beschreibung"
-        app:layout_constraintTop_toBottomOf="@+id/editTextArticleCategory" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerArticleCategory" />
 
     <EditText
         android:id="@+id/editTextArticleAddress"

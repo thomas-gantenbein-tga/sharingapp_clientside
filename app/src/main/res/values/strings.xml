@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">sharingapp_clientside</string>
+    <string name="app_name">TeilHabe</string>
     <string name="action_settings">Settings</string>
 
     <string-array name="articleCategory">
+        <item>Kategorie wählen</item>
         <item>Auto</item>
         <item>Garten</item>
         <item>Küche</item>
