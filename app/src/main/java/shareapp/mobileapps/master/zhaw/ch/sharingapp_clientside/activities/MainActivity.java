@@ -14,6 +14,7 @@ import android.view.View;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.R;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataListener;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataService;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Endpoint;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.ServerDataService;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements DataListener {
             }
         });
 
-        DataService dataService = new ServerDataService(this);
+        DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
         //sobald die Daten hier sind, wird Methode receiveData ausgeführt
         dataService.deliverAllItems(this);
 

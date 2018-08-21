@@ -17,6 +17,7 @@ public class ServerDataService implements DataService {
     private AppCompatActivity activity;
     private DataListener listener;
     private RequestQueue requestQueue;
+    private Endpoint endpoint;
     private final Response.Listener<NetworkResponse> onResponse =
             new Response.Listener<NetworkResponse>() {
                 @Override
@@ -35,15 +36,19 @@ public class ServerDataService implements DataService {
                 }
             };
 
-    public ServerDataService(AppCompatActivity activity) {
+    public ServerDataService(AppCompatActivity activity, Endpoint endpoint) {
         this.activity = activity;
+        this.endpoint = endpoint;
         requestQueue = Volley.newRequestQueue(activity);
     }
 
     @Override
     public void deliverAllItems(DataListener listener) {
         this.listener = listener;
-        Request<NetworkResponse> request = new NetworkResponseRequest(Request.Method.GET, "http://10.0.2.2:8080/items", null, onResponse, onResponseError);
+        String urlString = new StringBuilder().append(endpoint.getUrlBasePath())
+                .append("/").append("items").toString();
+        Request<NetworkResponse> request = new NetworkResponseRequest(Request.Method.GET,
+                urlString, null, onResponse, onResponseError);
         requestQueue.add(request);
     }
 
