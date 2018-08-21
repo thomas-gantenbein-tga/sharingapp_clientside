@@ -9,6 +9,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.R;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataService;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Endpoint;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.ServerDataService;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
 public class CreateNewArticleActivity extends AppCompatActivity {
 
@@ -21,7 +25,7 @@ public class CreateNewArticleActivity extends AppCompatActivity {
         String[] r = getResources().getStringArray(R.array.articleCategory);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, r) {
-            // nicht unbedingt nötig, aber hübsch: Erster Eintrag verschwindet wenn Dropdown aufgeht
+            // nicht unbedingt nötig, aber hübsch: Erster Eintrag verschwindet, wenn Dropdown aufgeht
             @Override
             public View getDropDownView(int position, View convertView, ViewGroup parent)
             {
@@ -46,4 +50,13 @@ public class CreateNewArticleActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }
+
+    public void onCreateButtonClick(View view) {
+        DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
+        //hier irgendwie an die Textfelder rankommen und daraus ein Item generieren
+        //etwa so: ((TextView) findViewById(R.id.editTextArticleZipCode)).getText()
+        Item item = new Item("tgantenbein", "Super Teil", "Haushalt", "Ein wirklich super Teil", "Wässerwiesenstrasse 67a","Winterthur", "8408", "111");
+        dataService.saveItem(item);
+    }
+
 }

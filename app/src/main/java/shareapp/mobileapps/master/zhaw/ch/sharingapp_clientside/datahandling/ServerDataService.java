@@ -25,7 +25,9 @@ public class ServerDataService implements DataService {
                     Gson gson = new Gson();
                     String stringResponse = NetworkResponseRequest.parseResponseToString(response);
                     Item[] itemList = gson.fromJson(stringResponse, Item[].class);
-                    listener.receiveData(itemList);
+                    if (listener instanceof DataListener) {
+                        listener.receiveData(itemList);
+                    }
                 }
             };
     private final Response.ErrorListener onResponseError =
