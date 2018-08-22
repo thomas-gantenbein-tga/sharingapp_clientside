@@ -4,93 +4,154 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="18dp"
     android:paddingTop="18dp"
-    android:layout_marginLeft="18dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activities.MainActivity"
     tools:showIn="@layout/activity_create_new_article">
 
-    <TextView
-        android:id="@+id/editTextTitleOfPage"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/TitleOfPage_text_input_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="3dp"
-        android:text="Gegenstand teilen"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintBottom_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/editTextArticleTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textAutoComplete"
-        android:selectAllOnFocus="true"
-        android:text="Titel"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTitleOfPage" />
+        <TextView
+            android:id="@+id/editTextTitleOfPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="3dp"
+            android:text="Gegenstand teilen"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"></TextView>
 
-    <Spinner
-        android:id="@+id/spinnerArticleCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingVertical="10dp"
-        android:ems="10"
-        app:layout_constraintTop_toBottomOf="@+id/editTextArticleTitle" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/editTextArticleDescription"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ArticleTitle_text_input_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:lines="2"
-        android:maxLines="10"
-        android:minLines="2"
-        android:selectAllOnFocus="true"
-        android:singleLine="false"
-        android:text="Artikel-Beschreibung"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerArticleCategory" />
+        app:layout_constraintTop_toBottomOf="@+id/TitleOfPage_text_input_layout">
 
-    <EditText
-        android:id="@+id/editTextArticleAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textAutoComplete"
-        android:selectAllOnFocus="true"
-        android:text="Adresse"
-        app:layout_constraintTop_toBottomOf="@+id/editTextArticleDescription" />
+        <EditText
+            android:id="@+id/editTextArticleTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Titel"
+            android:inputType="textAutoComplete"
+            android:selectAllOnFocus="true"
+            android:text="Titel" />
 
-    <EditText
-        android:id="@+id/editTextArticleCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textAutoComplete"
-        android:selectAllOnFocus="true"
-        android:text="Ort"
-        app:layout_constraintTop_toBottomOf="@+id/editTextArticleAddress" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/editTextArticleZipCode"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/SpinnerArticleCategory_text_input_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:selectAllOnFocus="true"
-        android:text="PLZ"
-        app:layout_constraintTop_toBottomOf="@+id/editTextArticleCity" />
+        app:layout_constraintTop_toBottomOf="@+id/ArticleTitle_text_input_layout">
 
-    <EditText
-        android:id="@+id/editTextArticleTelephoneNumber"
-        android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/spinnerArticleCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:paddingVertical="10dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ArticleDescription_text_input_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="phone"
-        android:selectAllOnFocus="true"
-        android:text="Telefon"
-        app:layout_constraintTop_toBottomOf="@+id/editTextArticleZipCode" />
+        app:layout_constraintTop_toBottomOf="@+id/SpinnerArticleCategory_text_input_layout">
+
+        <EditText
+            android:id="@+id/editTextArticleDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Artikel-Beschreibung"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            android:maxLines="10"
+            android:minLines="2"
+            android:selectAllOnFocus="true"
+            android:singleLine="false"
+            android:text="Artikel-Beschreibung" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/Adresse_text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/ArticleCity_text_input_layout">
+
+        <EditText
+            android:id="@+id/editTextArticleAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Adresse"
+            android:inputType="textAutoComplete"
+            android:selectAllOnFocus="true"
+            android:text="Adresse" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ArticleCity_text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="18dp">
+
+        <EditText
+            android:id="@+id/editTextArticleCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Ort"
+            android:inputType="textAutoComplete"
+            android:selectAllOnFocus="true"
+            android:text="Ort" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ZipCode_text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/ArticleCity_text_input_layout">
+
+        <EditText
+            android:id="@+id/editTextArticleZipCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="PLZ"
+            android:inputType="number"
+            android:selectAllOnFocus="true"
+            android:text="PLZ" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ZTelephoneNumber_text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/ZipCode_text_input_layout">
+
+        <EditText
+            android:id="@+id/editTextArticleTelephoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Telefon"
+            android:inputType="phone"
+            android:selectAllOnFocus="true"
+            android:text="Telefon" />
+
+    </android.support.design.widget.TextInputLayout>
+
 
 </android.support.constraint.ConstraintLayout>
