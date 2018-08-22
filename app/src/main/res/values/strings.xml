@@ -8,5 +8,6 @@
         <item>Garten</item>
         <item>Küche</item>
         <item>Werkstatt</item>
+        <item>Haushalt</item>
     </string-array>
 </resources>
