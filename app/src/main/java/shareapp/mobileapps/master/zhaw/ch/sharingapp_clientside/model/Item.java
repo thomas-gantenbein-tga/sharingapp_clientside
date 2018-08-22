@@ -28,4 +28,16 @@ public class Item {
     public String getOwnerId() {
         return ownerId;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }
