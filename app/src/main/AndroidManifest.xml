@@ -18,11 +18,21 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".activities.ShowArticleListActivity" />
-        <activity android:name=".activities.CreateNewArticleActivity"></activity>
+        <activity android:name=".activities.CreateNewArticleActivity" />
+        <activity
+            android:name=".activities.ShowArticleDetailActivity"
+            android:label="@string/title_activity_show_article_detail"
+            android:parentActivityName=".activities.ShowArticleListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.activities.ShowArticleListActivity" />
+        </activity>
     </application>
 
 </manifest>

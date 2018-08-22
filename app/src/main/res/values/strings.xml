@@ -10,4 +10,5 @@
         <item>Werkstatt</item>
         <item>Haushalt</item>
     </string-array>
+    <string name="title_activity_show_article_detail">ShowArticleDetailActivity</string>
 </resources>

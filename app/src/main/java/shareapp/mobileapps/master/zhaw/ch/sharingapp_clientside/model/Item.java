@@ -1,8 +1,9 @@
 package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Item {
+public class Item implements Serializable {
     private String ownerId;
     private UUID itemId;
     private String title;
@@ -12,6 +13,22 @@ public class Item {
     private String city;
     private String zipCode;
     private String telephoneNumber;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
 
     public Item(String ownerId, String title, String category, String description,
                 String address, String city, String zipCode, String telephoneNumber) {
