@@ -81,4 +81,9 @@ public class MainActivity extends AppCompatActivity implements DataListener {
         Intent intent = new Intent( this, CreateNewArticleActivity.class);
         startActivity(intent);
     }
+
+    public void switchToTestActivity(View view) {
+        Intent intent = new Intent( this, TestActivity.class);
+        startActivity(intent);
+    }
 }

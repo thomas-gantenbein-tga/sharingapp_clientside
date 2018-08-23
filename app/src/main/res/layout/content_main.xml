@@ -28,5 +28,15 @@
         app:layout_constraintStart_toStartOf="@+id/showAllArticles"
         app:layout_constraintTop_toBottomOf="@+id/showAllArticles" />
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="switchToTestActivity"
+        android:text="TestActivity starten"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createNewArticle" />
+
 
 </android.support.constraint.ConstraintLayout>
