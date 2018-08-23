@@ -53,9 +53,17 @@ public class CreateNewArticleActivity extends AppCompatActivity {
 
     public void onCreateButtonClick(View view) {
         DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
-        //hier irgendwie an die Textfelder rankommen und daraus ein Item generieren
-        //etwa so: ((TextView) findViewById(R.id.editTextArticleZipCode)).getText()
-        Item item = new Item("tgantenbein", "Super Teil", "Haushalt", "Ein wirklich super Teil", "Wässerwiesenstrasse 67a","Winterthur", "8408", "111");
+        String ownerId = "tgantenbein";
+        String title = ((TextView) findViewById(R.id.editTextArticleTitle)).getText().toString();
+        Spinner spinner = findViewById(R.id.spinnerArticleCategory);
+        String category = (String) spinner.getSelectedItem();
+        String description= ((TextView) findViewById(R.id.editTextArticleDescription)).getText().toString();
+        String address = ((TextView) findViewById(R.id.editTextArticleAddress)).getText().toString();
+        String city = ((TextView) findViewById(R.id.editTextArticleCity)).getText().toString();
+        String zipCode = ((TextView) findViewById(R.id.editTextArticleZipCode)).getText().toString();
+        String telephone = ((TextView) findViewById(R.id.editTextArticleTelephoneNumber)).getText().toString();
+
+        Item item = new Item(ownerId, title, category, description, address,city, zipCode, telephone);
         dataService.saveItem(item);
     }
 

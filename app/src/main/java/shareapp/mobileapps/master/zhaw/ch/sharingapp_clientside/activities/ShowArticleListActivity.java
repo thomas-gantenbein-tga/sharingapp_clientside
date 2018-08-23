@@ -38,8 +38,6 @@ public class ShowArticleListActivity extends AppCompatActivity implements DataLi
                 startActivity(intent);
             }
         });
-
-
     }
 
     @Override

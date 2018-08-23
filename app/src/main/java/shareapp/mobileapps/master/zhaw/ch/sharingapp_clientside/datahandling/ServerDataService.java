@@ -60,7 +60,12 @@ public class ServerDataService implements DataService {
         // itemId is set by the server
         Gson gson = new Gson();
         String requestBody = gson.toJson(item, Item.class);
-        Request<NetworkResponse> request = new NetworkResponseRequest(Request.Method.POST, "http://10.0.2.2:8080/items/add", requestBody, onResponse, onResponseError);
+        String urlString = new StringBuilder()
+                .append(endpoint.getUrlBasePath())
+                .append("/items/add")
+                .toString();
+        Request<NetworkResponse> request = new NetworkResponseRequest(Request.Method.POST,
+                urlString, requestBody, onResponse, onResponseError);
         requestQueue.add(request);
     }
 
