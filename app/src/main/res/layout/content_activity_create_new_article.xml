@@ -10,62 +10,54 @@
     tools:context=".activities.MainActivity"
     tools:showIn="@layout/activity_create_new_article">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/TitleOfPage_text_input_layout"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/editTextTitleOfPage"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/editTextTitleOfPage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="3dp"
-            android:text="Gegenstand teilen"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"></TextView>
-
-    </android.support.design.widget.TextInputLayout>
+        android:paddingBottom="3dp"
+        android:text="Gegenstand teilen"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/ArticleTitle_text_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/TitleOfPage_text_input_layout">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTitleOfPage">
 
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/editTextArticleTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Titel"
+            android:hint="Titel des Gegenstandes"
             android:inputType="textAutoComplete"
             android:selectAllOnFocus="true"
-            android:text="Titel" />
-
+            android:text="Titel des Gegenstandes" />
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/SpinnerArticleCategory_text_input_layout"
-        android:layout_width="match_parent"
+    <Spinner
+        android:id="@+id/spinnerArticleCategory"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/ArticleTitle_text_input_layout">
-
-        <Spinner
-            android:id="@+id/spinnerArticleCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:paddingVertical="10dp" />
-
-    </android.support.design.widget.TextInputLayout>
+        android:ems="10"
+        android:paddingVertical="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ArticleTitle_text_input_layout">/></Spinner>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/ArticleDescription_text_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/SpinnerArticleCategory_text_input_layout">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerArticleCategory">
 
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/editTextArticleDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,16 +70,17 @@
             android:selectAllOnFocus="true"
             android:singleLine="false"
             android:text="Artikel-Beschreibung" />
-
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/Adresse_text_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/ArticleCity_text_input_layout">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ArticleDescription_text_input_layout">
 
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/editTextArticleAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,16 +89,17 @@
             android:inputType="textAutoComplete"
             android:selectAllOnFocus="true"
             android:text="Adresse" />
-
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/ArticleCity_text_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteY="18dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Adresse_text_input_layout">
 
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/editTextArticleCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -114,16 +108,17 @@
             android:inputType="textAutoComplete"
             android:selectAllOnFocus="true"
             android:text="Ort" />
-
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/ZipCode_text_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ArticleCity_text_input_layout">
 
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/editTextArticleZipCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -132,16 +127,17 @@
             android:inputType="number"
             android:selectAllOnFocus="true"
             android:text="PLZ" />
-
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/ZTelephoneNumber_text_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ZipCode_text_input_layout">
 
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/editTextArticleTelephoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -150,7 +146,6 @@
             android:inputType="phone"
             android:selectAllOnFocus="true"
             android:text="Telefon" />
-
     </android.support.design.widget.TextInputLayout>
 
 

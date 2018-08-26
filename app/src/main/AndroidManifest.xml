@@ -33,7 +33,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.activities.ShowArticleListActivity" />
         </activity>
-        <activity android:name=".activities.TestActivity"></activity>
     </application>
 
 </manifest>
