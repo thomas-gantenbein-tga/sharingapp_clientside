@@ -76,7 +76,7 @@ public class ServerDataService implements DataService {
         } else if (status == Status.SUCCESS && message.equals("404")) {
             listenerMessage = "Keine Gegenstände verfügbar auf Server";
         } else if (status == Status.FAILURE) {
-            listenerMessage = "Hoppla, da ist etwas schiefgegangen. Versuchen Sie es noch einmal." +
+            listenerMessage = "Hoppla, da ist etwas schiefgegangen. Versuchen Sie es noch einmal. " +
                     "Fehlerdetail: " + message;
         }
         listener.receiveData(items, status, listenerMessage);

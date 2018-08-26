@@ -95,7 +95,7 @@ public class CreateNewArticleActivity extends AppCompatActivity implements DataL
             Toast toast = Toast.makeText(context, message, duration);
             toast.show();
             clearTextFields();
-        } else {
+        } else if (status == Status.FAILURE){
             Toast toast = Toast.makeText(context, message, duration);
             toast.show();
         }
