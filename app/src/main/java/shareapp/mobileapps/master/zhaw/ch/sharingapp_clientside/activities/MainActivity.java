@@ -4,19 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.R;
-import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataListener;
-import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataService;
-import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Endpoint;
-import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.ServerDataService;
-import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
-public class MainActivity extends AppCompatActivity implements DataListener {
+public class MainActivity extends AppCompatActivity {
 
 
 
@@ -26,10 +20,6 @@ public class MainActivity extends AppCompatActivity implements DataListener {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
-        //sobald die Daten hier sind, wird Methode receiveData ausgeführt
-        dataService.deliverAllItems(this);
     }
 
     @Override
@@ -52,13 +42,6 @@ public class MainActivity extends AppCompatActivity implements DataListener {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void receiveData(Item[] items) {
-        if (items != null) {
-            Log.i("test", items[0].getOwnerId());
-        }
     }
 
     public void showArticleList(View view) {

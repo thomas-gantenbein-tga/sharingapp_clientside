@@ -13,6 +13,7 @@ import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Dat
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Endpoint;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.ItemviewAdapter;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.ServerDataService;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Status;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
 public class ShowArticleListActivity extends AppCompatActivity implements DataListener {
@@ -41,7 +42,7 @@ public class ShowArticleListActivity extends AppCompatActivity implements DataLi
     }
 
     @Override
-    public void receiveData(Item[] items) {
+    public void receiveData(Item[] items, Status status, String message) {
         itemviewAdapter.setItemList(items);
         ListView listView = findViewById(R.id.showArticlelistListview);
         listView.setAdapter(itemviewAdapter);

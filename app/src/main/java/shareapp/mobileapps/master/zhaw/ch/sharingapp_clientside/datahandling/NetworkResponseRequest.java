@@ -20,8 +20,6 @@ public class NetworkResponseRequest extends Request<NetworkResponse> {
 
     private final String mRequestBody;
 
-
-
     // @GuardedBy("mLock")
     private Response.Listener<NetworkResponse> mListener;
 
