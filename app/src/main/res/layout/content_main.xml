@@ -28,4 +28,14 @@
         app:layout_constraintStart_toStartOf="@+id/showAllArticles"
         app:layout_constraintTop_toBottomOf="@+id/showAllArticles" />
 
+    <Button
+        android:id="@+id/findArticle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="findArticle"
+        android:text="Artikel suchen"
+        app:layout_constraintStart_toStartOf="@+id/createNewArticle"
+        app:layout_constraintTop_toBottomOf="@+id/createNewArticle" />
+
 </android.support.constraint.ConstraintLayout>

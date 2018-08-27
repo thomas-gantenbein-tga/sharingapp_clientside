@@ -54,4 +54,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void findArticle(View view) {
+        Intent intent = new Intent( this, FindArticleActivity.class);
+        startActivity(intent);
+    }
+
 }

@@ -33,6 +33,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.activities.ShowArticleListActivity" />
         </activity>
+        <activity
+            android:name=".activities.FindArticleActivity"
+            android:label="@string/title_activity_find_article"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

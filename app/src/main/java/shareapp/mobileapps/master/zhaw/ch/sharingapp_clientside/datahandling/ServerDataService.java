@@ -10,6 +10,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
 public class ServerDataService implements DataService {
@@ -34,6 +37,7 @@ public class ServerDataService implements DataService {
                     alertListener(null, Status.FAILURE, error.toString());
                 }
             };
+
 
     public ServerDataService(AppCompatActivity activity, Endpoint endpoint) {
         this.endpoint = endpoint;
@@ -75,6 +79,8 @@ public class ServerDataService implements DataService {
             listenerMessage = "Alle Gegenstände vom Server geholt";
         } else if (status == Status.SUCCESS && message.equals("404")) {
             listenerMessage = "Keine Gegenstände verfügbar auf Server";
+        } else if (status == Status.FAILURE && message.endsWith("ClientError")) {
+            listenerMessage = "Sorry, keine Gegenstände mit diesen Kriterien gefunden.";
         } else if (status == Status.FAILURE) {
             listenerMessage = "Hoppla, da ist etwas schiefgegangen. Versuchen Sie es noch einmal. " +
                     "Fehlerdetail: " + message;
@@ -82,6 +88,29 @@ public class ServerDataService implements DataService {
         listener.receiveData(items, status, listenerMessage);
     }
 
+    @Override
+    public void findItems(DataListener listener, String... params) {
+        this.listener = listener;
+        List<String> searchParams = new ArrayList<>();
+        for (String param : params) {
+            if (!param.endsWith("=") && !param.contains("Kategorie wählen")) {
+                searchParams.add(param);
+            }
+        }
+        StringBuilder getParams = new StringBuilder();
+        getParams.append("?").append(searchParams.get(0));
+        for (int i = 1; i < searchParams.size(); i++) {
+            getParams.append("&").append(searchParams.get(i));
+        }
+        String urlString = new StringBuilder()
+                .append(endpoint.getUrlBasePath())
+                .append("/items")
+                .append(getParams.toString())
+                .toString();
+        Request<NetworkResponse> request = new NetworkResponseRequest(Request.Method.GET,
+                urlString, null, onResponse, onResponseError);
+        requestQueue.add(request);
+    }
 
 
 }

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.FindArticleActivity"
+    tools:showIn="@layout/activity_find_article">
+
+    <TextView
+        android:id="@+id/findArticleMainTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="3dp"
+        android:text="Gegenstand suchen"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ArticleTitle_text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/findArticleMainTitle">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/findArticleTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Titel enthält"
+            android:inputType="textAutoComplete"
+            android:selectAllOnFocus="true"
+            android:text="" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Spinner
+        android:id="@+id/findArticleCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:paddingVertical="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ArticleTitle_text_input_layout"
+        android:textStyle="italic"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ArticleDescription_text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/findArticleCategory">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/findArticleDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Beschreibung enthält"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            android:maxLines="10"
+            android:minLines="2"
+            android:selectAllOnFocus="true"
+            android:singleLine="false"
+            android:text="" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/UserID_text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ArticleDescription_text_input_layout">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/findArticleOwnerId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Anwender-ID enthält"
+            android:inputType="textAutoComplete"
+            android:selectAllOnFocus="true"
+            android:text="" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/Adresse_text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UserID_text_input_layout">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/findArticleAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Adresse enthält"
+            android:inputType="textAutoComplete"
+            android:selectAllOnFocus="true"
+            android:text="" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ArticleCity_text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Adresse_text_input_layout">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/findArticleCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Ort enthält"
+            android:inputType="textAutoComplete"
+            android:selectAllOnFocus="true"
+            android:text="" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ZipCode_text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ArticleCity_text_input_layout">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/findArticleZipCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="PLZ ist gleich"
+            android:inputType="number"
+            android:selectAllOnFocus="true"
+            android:text="" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ZTelephoneNumber_text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ZipCode_text_input_layout">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/findArticleTelephone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Telefon ist gleich"
+            android:inputType="phone"
+            android:selectAllOnFocus="true"
+            android:text="" />
+    </android.support.design.widget.TextInputLayout>
+    <Button
+        android:id="@+id/findArticleFindButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Suchen"
+        android:onClick="onFindButtonClick"
+        app:layout_constraintStart_toStartOf="@+id/ZTelephoneNumber_text_input_layout"
+        app:layout_constraintTop_toBottomOf="@+id/ZTelephoneNumber_text_input_layout" />
+
+</android.support.constraint.ConstraintLayout>
