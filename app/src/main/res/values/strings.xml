@@ -22,4 +22,7 @@
     <string name="title_activity_show_article_detail">ShowArticleDetailActivity</string>
     <string name="title_activity_find_article">FindArticleActivity</string>
     <string name="title_activity_search_results">SearchResultsActivity</string>
+    <string name="title_activity_pseudo_login">PseudoLoginActivity</string>
+    <string name="title_activity_delete_item_overview">DeleteItemOverviewActivity</string>
+    <string name="title_activity_delete_item_detail">DeleteItemDetailActivity</string>
 </resources>

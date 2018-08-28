@@ -7,4 +7,6 @@ public interface DataService {
     void saveItem(Item item, DataListener listener);
     void alertListener(Item[] items, Status status, String message);
     void findItems(DataListener listener, String... params);
+    void deliverUserItems(DataListener listener, String username);
+    void deletItem(DataListener listener, String itemId);
 }

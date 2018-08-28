@@ -5,6 +5,9 @@ import java.util.UUID;
 
 public class Item implements Serializable {
     private String ownerId;
+
+
+
     private UUID itemId;
     private String title;
     private String category;
@@ -56,5 +59,9 @@ public class Item implements Serializable {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getItemId() {
+        return itemId.toString();
     }
 }

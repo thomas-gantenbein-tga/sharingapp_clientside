@@ -2,6 +2,7 @@ package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling;
 
 import android.support.v7.app.AppCompatActivity;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -17,6 +18,7 @@ import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
 public class ServerDataService implements DataService {
 
+    private static final int SOCKET_TIMEOUT_MS = 5_000;
     private DataListener listener;
     private RequestQueue requestQueue;
     private Endpoint endpoint;
@@ -51,6 +53,10 @@ public class ServerDataService implements DataService {
                 .append("/").append("items").toString();
         Request<NetworkResponse> request = new NetworkResponseRequest(Request.Method.GET,
                 urlString, null, onResponse, onResponseError);
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(request);
     }
 
@@ -67,24 +73,36 @@ public class ServerDataService implements DataService {
                 .toString();
         Request<NetworkResponse> request = new NetworkResponseRequest(Request.Method.POST,
                 urlString, requestBody, onResponse, onResponseError);
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(request);
     }
 
     @Override
     public void alertListener(Item[] items, Status status, String message) {
         String listenerMessage = null;
-        if (status == Status.SUCCESS && message.equals("201")) {
-            listenerMessage = "Gegenstand erfolgreich geteilt";
-        } else if (status == Status.SUCCESS && message.equals("200")) {
-            listenerMessage = "Alle Gegenstände vom Server geholt";
-        } else if (status == Status.SUCCESS && message.equals("404")) {
-            listenerMessage = "Keine Gegenstände verfügbar auf Server";
-        } else if (status == Status.FAILURE && message.endsWith("ClientError")) {
-            listenerMessage = "Sorry, keine Gegenstände mit diesen Kriterien gefunden.";
+        if (status == Status.SUCCESS) {
+            if (message.equals("201")) {
+                listenerMessage = "Gegenstand erfolgreich geteilt";
+            } else if (message.equals("200")) {
+                listenerMessage = "Alle Gegenstände vom Server geholt";
+            } else if (message.equals("404")) {
+                listenerMessage = "Keine Gegenstände verfügbar auf Server";
+            } else if (message.equals("204")) {
+                listenerMessage = "Gegenstand gelöscht";
+            }
         } else if (status == Status.FAILURE) {
-            listenerMessage = "Hoppla, da ist etwas schiefgegangen. Versuchen Sie es noch einmal. " +
-                    "Fehlerdetail: " + message;
+            if (message.endsWith("ClientError")) {
+                listenerMessage = "Sorry, keine Gegenstände mit diesen Kriterien gefunden.";
+            } else {
+                listenerMessage = "Hoppla, da ist etwas schiefgegangen. Versuchen Sie es noch einmal. " +
+                        "Fehlerdetail: " + message;
+            }
         }
+
+
         listener.receiveData(items, status, listenerMessage);
     }
 
@@ -108,6 +126,41 @@ public class ServerDataService implements DataService {
                 .append(getParams.toString())
                 .toString();
         Request<NetworkResponse> request = new NetworkResponseRequest(Request.Method.GET,
+                urlString, null, onResponse, onResponseError);
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        requestQueue.add(request);
+    }
+
+    @Override
+    public void deliverUserItems(DataListener listener, String username) {
+        this.listener = listener;
+        String urlString = new StringBuilder()
+                .append(endpoint.getUrlBasePath())
+                .append("/items/searchByOwner/")
+                .append(username)
+                .toString();
+        Request<NetworkResponse> request = new NetworkResponseRequest(Request.Method.GET,
+                urlString, null, onResponse, onResponseError);
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        requestQueue.add(request);
+
+    }
+
+    @Override
+    public void deletItem(DataListener listener, String itemId) {
+        this.listener = listener;
+        String urlString = new StringBuilder()
+                .append(endpoint.getUrlBasePath())
+                .append("/items/delete/")
+                .append(itemId)
+                .toString();
+        Request<NetworkResponse> request = new NetworkResponseRequest(Request.Method.POST,
                 urlString, null, onResponse, onResponseError);
         requestQueue.add(request);
     }

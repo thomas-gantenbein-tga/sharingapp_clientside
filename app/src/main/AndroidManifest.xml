@@ -40,6 +40,18 @@
         <activity
             android:name=".activities.SearchResultsActivity"
             android:label="@string/title_activity_search_results"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.PseudoLoginActivity"
+            android:label="@string/title_activity_pseudo_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.DeleteItemOverviewActivity"
+            android:label="@string/title_activity_delete_item_overview"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.DeleteItemDetailActivity"
+            android:label="@string/title_activity_delete_item_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
