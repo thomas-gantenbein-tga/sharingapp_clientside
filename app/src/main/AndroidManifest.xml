@@ -36,6 +36,10 @@
         <activity
             android:name=".activities.FindArticleActivity"
             android:label="@string/title_activity_find_article"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.SearchResultsActivity"
+            android:label="@string/title_activity_search_results"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -1,6 +1,7 @@
 package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +20,8 @@ import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Sta
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
 public class FindArticleActivity extends AppCompatActivity implements DataListener{
+
+    public static final String EXTRA_ITEMS = "items";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +58,9 @@ public class FindArticleActivity extends AppCompatActivity implements DataListen
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_LONG;
         if (status == Status.SUCCESS) {
-            Toast toast = Toast.makeText(context, message + "Besitzer erstes Item: " + items[0].getOwnerId(), duration);
-            toast.show();
+            Intent intent = new Intent(this, SearchResultsActivity.class);
+            intent.putExtra(EXTRA_ITEMS, items);
+            startActivity(intent);
         } else if (status == Status.FAILURE){
             Toast toast = Toast.makeText(context, message, duration);
             toast.show();
