@@ -7,6 +7,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.R;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
@@ -47,7 +52,6 @@ public class ItemviewAdapter extends BaseAdapter {
         TextView description = vi.findViewById(R.id.showArticleListDescription);
 
         Item item = itemList[i];
-
         title.setText(item.getTitle());
         category.setText(item.getCategory());
         description.setText(item.getDescription());
@@ -56,5 +60,18 @@ public class ItemviewAdapter extends BaseAdapter {
 
     public void setItemList(Item[] itemList) {
         this.itemList = itemList;
+    }
+
+    public void removeItem(String itemId) {
+        List<Item> items = new ArrayList<>(Arrays.asList(itemList));
+        for (Iterator<Item> iterator = items.iterator(); iterator.hasNext(); ) {
+            Item item = iterator.next();
+            if (item.getItemId().equals(itemId)) {
+                iterator.remove();
+                itemList = items.toArray(new Item[0]);
+                this.notifyDataSetChanged();
+                return;
+            }
+        }
     }
 }

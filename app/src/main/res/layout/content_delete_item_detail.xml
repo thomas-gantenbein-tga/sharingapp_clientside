@@ -120,15 +120,32 @@
         app:layout_constraintStart_toEndOf="@+id/labelPhone"
         app:layout_constraintTop_toTopOf="@+id/labelPhone" />
 
-    <Button
-        android:id="@+id/button2"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="deleteItem"
-        android:text="Gegenstand löschen"
-        app:layout_constraintStart_toStartOf="@+id/labelPhone"
-        app:layout_constraintTop_toBottomOf="@+id/labelPhone" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/deleteArticleDetailPhone">
+
+        <Button
+            android:id="@+id/deleteItemDetailButton"
+            android:layout_width="wrap_content"
+            android:ems="10"
+            android:layout_height="wrap_content"
+            android:onClick="deleteItem"
+            android:text="@string/deleteButtonCaption" />
+
+        <ProgressBar
+            android:id="@+id/deleteItemDetailProgressBar"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:indeterminate="true"
+            android:visibility="visible" />
+
+
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

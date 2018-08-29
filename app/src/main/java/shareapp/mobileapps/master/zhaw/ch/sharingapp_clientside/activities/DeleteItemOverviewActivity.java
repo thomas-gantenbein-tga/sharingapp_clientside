@@ -1,5 +1,6 @@
 package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,8 @@ import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 public class DeleteItemOverviewActivity extends AppCompatActivity {
 
     public static final String EXTRA_ITEM = "item";
+    public static final int REQUEST_CODE = 1;
+    private ItemviewAdapter itemviewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +26,8 @@ public class DeleteItemOverviewActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ItemviewAdapter itemviewAdapter = new ItemviewAdapter(this.getBaseContext());
+        itemviewAdapter = new ItemviewAdapter(this.getBaseContext());
         ListView listView = findViewById(R.id.deleteItemsListview);
-
         Intent intent = getIntent();
         Item[] items = (Item[]) intent.getSerializableExtra(PseudoLoginActivity.EXTRA_ITEMS);
         itemviewAdapter.setItemList(items);
@@ -37,9 +39,19 @@ public class DeleteItemOverviewActivity extends AppCompatActivity {
                 Item item = (Item) adapterView.getItemAtPosition(i);
                 Intent intent = new Intent(DeleteItemOverviewActivity.this, DeleteItemDetailActivity.class);
                 intent.putExtra(EXTRA_ITEM, item);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE);
             }
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                String itemId = data.getStringExtra(DeleteItemDetailActivity.ITEMID_EXTRA);
+                itemviewAdapter.removeItem(itemId);
+
+            }
+        }
+    }
 }

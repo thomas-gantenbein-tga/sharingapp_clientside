@@ -153,7 +153,7 @@ public class ServerDataService implements DataService {
     }
 
     @Override
-    public void deletItem(DataListener listener, String itemId) {
+    public void deleteItem(DataListener listener, String itemId) {
         this.listener = listener;
         String urlString = new StringBuilder()
                 .append(endpoint.getUrlBasePath())

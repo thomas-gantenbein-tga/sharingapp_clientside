@@ -22,7 +22,7 @@ public class CreateNewArticleActivity extends AppCompatActivity implements DataL
 
     private ProgressDialog pd;
     private long timeAtSaveAction;
-    private static final int minimumSaveDurationInMillis = 1500;
+    private static final int MINIMUM_SAVE_DURATION_IN_MILLIS = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,9 +81,9 @@ public class CreateNewArticleActivity extends AppCompatActivity implements DataL
 
     private void waitIfTooFast() {
         long saveDurationInMillis = System.currentTimeMillis() - timeAtSaveAction;
-        if (saveDurationInMillis < minimumSaveDurationInMillis) {
+        if (saveDurationInMillis < MINIMUM_SAVE_DURATION_IN_MILLIS) {
             try {
-                Thread.sleep(minimumSaveDurationInMillis - saveDurationInMillis);
+                Thread.sleep(MINIMUM_SAVE_DURATION_IN_MILLIS - saveDurationInMillis);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

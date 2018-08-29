@@ -1,11 +1,14 @@
 package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +21,12 @@ import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Sta
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
 public class DeleteItemDetailActivity extends AppCompatActivity implements DataListener{
+    public static final String ITEMID_EXTRA = "result";
     private String itemId;
+    private Button button;
+    private ProgressBar progressBar;
+    private static final int MINIMUM_DELETE_DURATION_IN_MILLIS = 1500;
+    private long timeAtDeleteAction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +60,14 @@ public class DeleteItemDetailActivity extends AppCompatActivity implements DataL
     }
 
     public void deleteItem(View view) {
+        button = findViewById(R.id.deleteItemDetailButton);
+        button.setEnabled(false);
+        button.setText("");
+        progressBar = findViewById(R.id.deleteItemDetailProgressBar);
+        progressBar.setVisibility(View.VISIBLE);
         DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
-        dataService.deletItem(this, itemId);
+        timeAtDeleteAction = System.currentTimeMillis();
+        dataService.deleteItem(this, itemId);
     }
 
 
@@ -64,6 +78,22 @@ public class DeleteItemDetailActivity extends AppCompatActivity implements DataL
             int duration = Toast.LENGTH_LONG;
             Toast toast = Toast.makeText(context, message, duration);
             toast.show();
+        }
+        waitIfTooFast();
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra(ITEMID_EXTRA, itemId);
+        setResult(Activity.RESULT_OK, returnIntent);
+        finish();
+    }
+
+    private void waitIfTooFast() {
+        long deleteDurationInMillis = System.currentTimeMillis() - timeAtDeleteAction;
+        if (deleteDurationInMillis < MINIMUM_DELETE_DURATION_IN_MILLIS) {
+            try {
+                Thread.sleep(MINIMUM_DELETE_DURATION_IN_MILLIS - deleteDurationInMillis);
+            } catch (InterruptedException e) {
+                //ignore
+            }
         }
     }
 }

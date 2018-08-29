@@ -25,4 +25,5 @@
     <string name="title_activity_pseudo_login">PseudoLoginActivity</string>
     <string name="title_activity_delete_item_overview">DeleteItemOverviewActivity</string>
     <string name="title_activity_delete_item_detail">DeleteItemDetailActivity</string>
+    <string name="deleteButtonCaption">Löschen</string>
 </resources>
