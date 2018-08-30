@@ -6,6 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activities.ShowArticleListActivity">
 
-    <include layout="@layout/content_activity_show_article_list" />
+    <include layout="@layout/content_show_article_list" />
 
 </android.support.constraint.ConstraintLayout>
