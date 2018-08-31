@@ -3,20 +3,17 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.CreateNewArticleActivity"
+    tools:showIn="@layout/activity_create_new_article"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="18dp"
+    android:layout_marginStart="18dp"
     android:fillViewport="true">
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:paddingTop="18dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".activities.CreateNewArticleActivity"
-        tools:showIn="@layout/activity_create_new_article">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/textViewTitleOfPage"
