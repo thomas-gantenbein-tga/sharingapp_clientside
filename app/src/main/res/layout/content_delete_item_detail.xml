@@ -129,9 +129,7 @@
 
         <Button
             android:id="@+id/deleteItemDetailButton"
-            android:layout_width="wrap_content"
-            android:ems="10"
-            android:layout_height="wrap_content"
+            style="@style/ButtonStyle"
             android:onClick="deleteItem"
             android:text="@string/deleteButtonCaption" />
 

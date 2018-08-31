@@ -166,9 +166,7 @@
     </android.support.design.widget.TextInputLayout>
     <Button
         android:id="@+id/findArticleFindButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        style="@style/ButtonStyle"
         android:text="Suchen"
         android:onClick="onFindButtonClick"
         app:layout_constraintStart_toStartOf="@+id/ZTelephoneNumber_text_input_layout"
