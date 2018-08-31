@@ -18,6 +18,7 @@ public class SearchResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_results);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ItemviewAdapter itemviewAdapter = new ItemviewAdapter(this.getBaseContext());
         ListView listView = findViewById(R.id.searchResultsListview);

@@ -25,6 +25,7 @@ public class DeleteItemOverviewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_delete_item_overview);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         itemviewAdapter = new ItemviewAdapter(this.getBaseContext());
         ListView listView = findViewById(R.id.deleteItemsListview);

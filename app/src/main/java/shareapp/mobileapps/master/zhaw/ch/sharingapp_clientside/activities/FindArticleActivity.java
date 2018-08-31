@@ -29,6 +29,7 @@ public class FindArticleActivity extends AppCompatActivity implements DataListen
         setContentView(R.layout.activity_find_article);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Spinner spinner = findViewById(R.id.findArticleCategory);
         String[] r = getResources().getStringArray(R.array.articleCategoryWithEmpty);

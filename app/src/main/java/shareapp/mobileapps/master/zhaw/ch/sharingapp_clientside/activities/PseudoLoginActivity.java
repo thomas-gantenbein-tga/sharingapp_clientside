@@ -27,6 +27,7 @@ public class PseudoLoginActivity extends AppCompatActivity implements DataListen
         setContentView(R.layout.activity_pseudo_login);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 

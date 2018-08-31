@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TeilHabe - gugus</string>
+    <string name="app_name">TeilHabe</string>
 
     <string-array name="articleCategory">
         <item>Kategorie wählen</item>

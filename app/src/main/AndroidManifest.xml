@@ -22,11 +22,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ShowArticleListActivity" />
-        <activity android:name=".activities.CreateNewArticleActivity" />
+        <activity android:name=".activities.ShowArticleListActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".activities.MainActivity"
+            />
+        <activity android:name=".activities.CreateNewArticleActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".activities.MainActivity"
+            />
         <activity
             android:name=".activities.ShowArticleDetailActivity"
-            android:label="@string/title_activity_show_article_detail"
+            android:label="@string/app_name"
             android:parentActivityName=".activities.ShowArticleListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -35,24 +41,29 @@
         </activity>
         <activity
             android:name=".activities.FindArticleActivity"
-            android:label="@string/title_activity_find_article"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.SearchResultsActivity"
-            android:label="@string/title_activity_search_results"
+            android:parentActivityName=".activities.FindArticleActivity"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.PseudoLoginActivity"
-            android:label="@string/title_activity_pseudo_login"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.DeleteItemOverviewActivity"
-            android:label="@string/title_activity_delete_item_overview"
+            android:parentActivityName=".activities.PseudoLoginActivity"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.DeleteItemDetailActivity"
-            android:label="@string/title_activity_delete_item_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:parentActivityName=".activities.DeleteItemOverviewActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
