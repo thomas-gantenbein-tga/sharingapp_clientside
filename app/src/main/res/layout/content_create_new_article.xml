@@ -7,9 +7,8 @@
     tools:showIn="@layout/activity_create_new_article"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="18dp"
-    android:layout_marginStart="18dp"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    style="@style/activity_margins">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"

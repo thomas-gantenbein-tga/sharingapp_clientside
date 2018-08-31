@@ -24,4 +24,9 @@
         <item name="android:ems">15</item>
     </style>
 
+    <style name="activity_margins">
+        <item name="android:paddingTop">18dp</item>
+        <item name="android:layout_marginStart">18dp</item>
+    </style>
+
 </resources>
