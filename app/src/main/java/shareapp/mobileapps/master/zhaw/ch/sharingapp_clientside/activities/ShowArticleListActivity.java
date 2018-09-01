@@ -88,9 +88,8 @@ public class ShowArticleListActivity extends AppCompatActivity implements DataLi
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+
+    public void reloadData(View view) {
         DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
         dataService.deliverAllItems(this);
     }

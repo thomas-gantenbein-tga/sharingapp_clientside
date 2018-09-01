@@ -2,11 +2,11 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/activity_margins"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/activity_margins"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activities.MainActivity"
+    tools:context=".activities.ShowArticleListActivity"
     tools:showIn="@layout/activity_show_article_list">
 
     <TextView
@@ -16,16 +16,29 @@
         android:paddingBottom="3dp"
         android:text="Verfügbare Gegenstände"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintBottom_toTopOf="@+id/showArticlelistListview"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/showArticlelistListview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonReloadData"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/showArticleListActivityTitle">
+        app:layout_constraintTop_toBottomOf="@+id/showArticleListActivityTitle"
+        app:layout_constraintVertical_chainStyle="spread_inside">
 
     </ListView>
+
+    <Button
+        android:id="@+id/buttonReloadData"
+        style="@style/ButtonStyle"
+        android:onClick="reloadData"
+        android:text="Aktualisieren"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/showArticlelistListview"
+        app:layout_constraintTop_toBottomOf="@+id/showArticlelistListview" />
 </android.support.constraint.ConstraintLayout>

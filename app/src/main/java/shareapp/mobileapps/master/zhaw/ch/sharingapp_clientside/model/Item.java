@@ -16,6 +16,11 @@ public class Item implements Serializable {
     private String city;
     private String zipCode;
     private String telephoneNumber;
+    private String picture;
+
+    public String getPicture() {
+        return picture;
+    }
 
     public String getAddress() {
         return address;
@@ -34,7 +39,7 @@ public class Item implements Serializable {
     }
 
     public Item(String ownerId, String title, String category, String description,
-                String address, String city, String zipCode, String telephoneNumber) {
+                String address, String city, String zipCode, String telephoneNumber, String picture) {
         this.ownerId = ownerId;
         this.title = title;
         this.category = category;
@@ -43,6 +48,7 @@ public class Item implements Serializable {
         this.city = city;
         this.zipCode = zipCode;
         this.telephoneNumber = telephoneNumber;
+        this.picture = picture;
     }
 
     public String getOwnerId() {
