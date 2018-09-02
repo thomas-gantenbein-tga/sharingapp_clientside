@@ -174,10 +174,33 @@
         <Button
             android:id="@+id/buttonCreateArticle"
             style="@style/ButtonStyle"
+            android:layout_marginTop="8dp"
             android:onClick="onCreateButtonClick"
             android:text="Gegenstand teilen"
             app:layout_constraintStart_toStartOf="@+id/ZTelephoneNumber_text_input_layout"
+            app:layout_constraintTop_toBottomOf="@+id/buttonAddPhoto" />
+
+        <Button
+            android:id="@+id/buttonAddPhoto"
+            style="@style/ButtonStyle"
+            android:layout_marginTop="8dp"
+            android:onClick="takePhoto"
+            android:text="Foto hinzufügen"
+            app:layout_constraintStart_toStartOf="@+id/buttonCreateArticle"
             app:layout_constraintTop_toBottomOf="@+id/ZTelephoneNumber_text_input_layout" />
+
+        <ImageView
+            android:id="@+id/createArticleImageView"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonCreateArticle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buttonCreateArticle"
+            app:layout_constraintTop_toTopOf="@+id/buttonAddPhoto" />
 
 
     </android.support.constraint.ConstraintLayout>
