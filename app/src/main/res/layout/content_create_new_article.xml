@@ -3,12 +3,12 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activities.CreateNewArticleActivity"
-    tools:showIn="@layout/activity_create_new_article"
+    style="@style/activity_margins"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    style="@style/activity_margins">
+    tools:context=".activities.CreateNewArticleActivity"
+    tools:showIn="@layout/activity_create_new_article">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
