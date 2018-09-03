@@ -3,11 +3,13 @@ package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +20,7 @@ import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Dat
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Endpoint;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.ServerDataService;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Status;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Constants;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
 public class DeleteItemDetailActivity extends AppCompatActivity implements DataListener{
@@ -57,7 +60,8 @@ public class DeleteItemDetailActivity extends AppCompatActivity implements DataL
                 .toString();
         address.setText(addressString);
         phone.setText(item.getTelephoneNumber());
-
+        DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
+        dataService.deliverItemWithPictureOnly(this, item.getItemId());
     }
 
     public void deleteItem(View view) {
@@ -74,17 +78,27 @@ public class DeleteItemDetailActivity extends AppCompatActivity implements DataL
 
     @Override
     public void receiveData(Item[] items, Status status, String message) {
-        if (status == Status.SUCCESS) {
+        if (status == Status.SUCCESS && items != null && items[0].getPicture() != null) {
+            ImageView imageView = findViewById(R.id.deleteArticleDetailPicture);
+            if (items[0].getPicture().isEmpty()) {
+                imageView.setVisibility(View.GONE);
+            } else {
+                Bitmap bitmap = items[0].getPictureAsBitmap();
+                imageView.setImageBitmap(bitmap);
+            }
+        }
+
+        if (status == Status.SUCCESS && message.equals(Constants.itemDeleted)) {
             Context context = getApplicationContext();
             int duration = Toast.LENGTH_LONG;
             Toast toast = Toast.makeText(context, message, duration);
             toast.show();
+            waitIfTooFast();
+            Intent returnIntent = new Intent();
+            returnIntent.putExtra(ITEMID_EXTRA, itemId);
+            setResult(Activity.RESULT_OK, returnIntent);
+            finish();
         }
-        waitIfTooFast();
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra(ITEMID_EXTRA, itemId);
-        setResult(Activity.RESULT_OK, returnIntent);
-        finish();
     }
 
     private void waitIfTooFast() {

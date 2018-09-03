@@ -31,8 +31,10 @@ public class DeleteItemOverviewActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.deleteItemsListview);
         Intent intent = getIntent();
         Item[] items = (Item[]) intent.getSerializableExtra(PseudoLoginActivity.EXTRA_ITEMS);
-        itemviewAdapter.setItemList(items);
-        listView.setAdapter(itemviewAdapter);
+        if (items != null) {
+            itemviewAdapter.setItemList(items);
+            listView.setAdapter(itemviewAdapter);
+        }
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -51,7 +53,6 @@ public class DeleteItemOverviewActivity extends AppCompatActivity {
             if (resultCode == Activity.RESULT_OK) {
                 String itemId = data.getStringExtra(DeleteItemDetailActivity.ITEMID_EXTRA);
                 itemviewAdapter.removeItem(itemId);
-
             }
         }
     }

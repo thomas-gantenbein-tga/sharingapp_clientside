@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Constants;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
 public class ServerDataService implements DataService {
@@ -85,20 +86,19 @@ public class ServerDataService implements DataService {
         String listenerMessage = null;
         if (status == Status.SUCCESS) {
             if (message.equals("201")) {
-                listenerMessage = "Gegenstand erfolgreich geteilt";
+                listenerMessage = Constants.itemShared;
             } else if (message.equals("200")) {
-                listenerMessage = "Alle Gegenstände vom Server geholt";
+                listenerMessage = Constants.itemsFetched;
             } else if (message.equals("404")) {
-                listenerMessage = "Keine Gegenstände verfügbar auf Server";
+                listenerMessage = Constants.itemNotAvailable;
             } else if (message.equals("204")) {
-                listenerMessage = "Gegenstand gelöscht";
+                listenerMessage = Constants.itemDeleted;
             }
         } else if (status == Status.FAILURE) {
             if (message.endsWith("ClientError")) {
-                listenerMessage = "Sorry, keine Gegenstände mit diesen Kriterien gefunden.";
+                listenerMessage = Constants.itemNotFound;
             } else {
-                listenerMessage = "Hoppla, da ist etwas schiefgegangen. Versuchen Sie es noch einmal. " +
-                        "Fehlerdetail: " + message;
+                listenerMessage = Constants.unexpectedError + message;
             }
         }
 

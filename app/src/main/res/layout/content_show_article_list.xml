@@ -24,7 +24,7 @@
         android:id="@+id/showArticlelistListview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonReloadData"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,12 +33,4 @@
 
     </ListView>
 
-    <Button
-        android:id="@+id/buttonReloadData"
-        style="@style/ButtonStyle"
-        android:onClick="reloadData"
-        android:text="Aktualisieren"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/showArticlelistListview"
-        app:layout_constraintTop_toBottomOf="@+id/showArticlelistListview" />
 </android.support.constraint.ConstraintLayout>
