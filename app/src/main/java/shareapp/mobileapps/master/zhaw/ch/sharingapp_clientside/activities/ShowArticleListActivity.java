@@ -24,8 +24,6 @@ public class ShowArticleListActivity extends AppCompatActivity implements DataLi
     private ItemviewAdapter itemviewAdapter;
     private ProgressDialog pd;
     public static final String EXTRA_ITEM = "item";
-    private long timeAtLoadAction;
-    private static final long minimumLoadDurationInMillis = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +40,6 @@ public class ShowArticleListActivity extends AppCompatActivity implements DataLi
         pd.setCancelable(false);
         pd.setIndeterminate(true);
         pd.show();
-        timeAtLoadAction = System.currentTimeMillis();
 
         dataService.deliverAllItems(this);
 
@@ -65,7 +62,6 @@ public class ShowArticleListActivity extends AppCompatActivity implements DataLi
             itemviewAdapter.setItemList(items);
             ListView listView = findViewById(R.id.showArticlelistListview);
             listView.setAdapter(itemviewAdapter);
-            waitIfTooFast();
         }
         if (status == Status.FAILURE){
             Context context = getApplicationContext();
@@ -76,18 +72,6 @@ public class ShowArticleListActivity extends AppCompatActivity implements DataLi
             startActivity(intent);
         }
     }
-
-    private void waitIfTooFast() {
-        long loadDurationInMillis = System.currentTimeMillis() - timeAtLoadAction;
-        if (loadDurationInMillis < minimumLoadDurationInMillis) {
-            try {
-                Thread.sleep(minimumLoadDurationInMillis - loadDurationInMillis);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
 
     public void reloadData(View view) {
         DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);

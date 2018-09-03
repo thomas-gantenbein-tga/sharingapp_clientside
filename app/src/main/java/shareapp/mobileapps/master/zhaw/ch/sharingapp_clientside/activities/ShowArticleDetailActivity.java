@@ -2,7 +2,6 @@ package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,9 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.R;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataListener;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataService;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Endpoint;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.ServerDataService;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Status;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
-public class ShowArticleDetailActivity extends AppCompatActivity {
+public class ShowArticleDetailActivity extends AppCompatActivity implements DataListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +33,6 @@ public class ShowArticleDetailActivity extends AppCompatActivity {
         TextView description = findViewById(R.id.showArticleDetailDescription);
         TextView address = findViewById(R.id.showArticleDetailAddress);
         TextView phone = findViewById(R.id.showArticleDetailPhone);
-        ImageView imageView = findViewById(R.id.showArticleDetailPicture);
 
         title.setText(item.getTitle());
         category.setText(item.getCategory());
@@ -43,10 +46,16 @@ public class ShowArticleDetailActivity extends AppCompatActivity {
                 .toString();
         address.setText(addressString);
         phone.setText(item.getTelephoneNumber());
-        String encodedPictureString = item.getPicture();
-        byte[] decodedPictureString = org.apache.commons.codec.binary.Base64.decodeBase64(encodedPictureString);
-        Bitmap bitmap = BitmapFactory.decodeByteArray(decodedPictureString, 0, decodedPictureString.length);
-        imageView.setImageBitmap(bitmap);
+        DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
+        dataService.deliverItemWithPictureOnly(this, item.getItemId());
     }
 
+    @Override
+    public void receiveData(Item[] items, Status status, String message) {
+        if (status == Status.SUCCESS && items[0].getPicture() != null && !items[0].getPicture().isEmpty()) {
+            Bitmap bitmap = items[0].getPictureAsBitmap();
+            ImageView imageView = findViewById(R.id.showArticleDetailPicture);
+            imageView.setImageBitmap(bitmap);
+        }
+    }
 }

@@ -165,5 +165,19 @@ public class ServerDataService implements DataService {
         requestQueue.add(request);
     }
 
+    @Override
+    public void deliverItemWithPictureOnly(DataListener listener, String itemId) {
+        this.listener = listener;
+        String urlString = new StringBuilder()
+                .append(endpoint.getUrlBasePath())
+                .append("/items/")
+                .append(itemId)
+                .append("/pictureonly")
+                .toString();
+        Request<NetworkResponse> request = new NetworkResponseRequest(Request.Method.GET,
+                urlString, null, onResponse, onResponseError);
+        requestQueue.add(request);
+    }
+
 
 }

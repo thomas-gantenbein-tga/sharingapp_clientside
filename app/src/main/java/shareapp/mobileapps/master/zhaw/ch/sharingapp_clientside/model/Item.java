@@ -1,5 +1,8 @@
 package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -69,5 +72,11 @@ public class Item implements Serializable {
 
     public String getItemId() {
         return itemId.toString();
+    }
+
+    public Bitmap getPictureAsBitmap() {
+        String encodedPictureString = this.getPicture();
+        byte[] decodedPictureString = org.apache.commons.codec.binary.Base64.decodeBase64(encodedPictureString);
+        return BitmapFactory.decodeByteArray(decodedPictureString, 0, decodedPictureString.length);
     }
 }

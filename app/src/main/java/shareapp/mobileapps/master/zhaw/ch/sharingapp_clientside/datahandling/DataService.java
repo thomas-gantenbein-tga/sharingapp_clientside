@@ -9,4 +9,5 @@ public interface DataService {
     void findItems(DataListener listener, String... params);
     void deliverUserItems(DataListener listener, String username);
     void deleteItem(DataListener listener, String itemId);
+    void deliverItemWithPictureOnly(DataListener listener, String itemId);
 }
