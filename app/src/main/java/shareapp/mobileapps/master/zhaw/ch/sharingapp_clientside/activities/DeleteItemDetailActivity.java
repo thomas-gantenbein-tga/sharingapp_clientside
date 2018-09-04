@@ -99,6 +99,13 @@ public class DeleteItemDetailActivity extends AppCompatActivity implements DataL
             setResult(Activity.RESULT_OK, returnIntent);
             finish();
         }
+
+        if (status == Status.FAILURE){
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, message, duration);
+            toast.show();
+        }
     }
 
     private void waitIfTooFast() {

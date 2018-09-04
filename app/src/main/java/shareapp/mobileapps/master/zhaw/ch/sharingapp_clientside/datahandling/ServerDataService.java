@@ -90,7 +90,7 @@ public class ServerDataService implements DataService {
             } else if (message.equals("200")) {
                 listenerMessage = Constants.itemsFetched;
             } else if (message.equals("404")) {
-                listenerMessage = Constants.itemNotAvailable;
+                listenerMessage = Constants.notItemsAvailable;
             } else if (message.equals("204")) {
                 listenerMessage = Constants.itemDeleted;
             }
