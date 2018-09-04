@@ -47,11 +47,7 @@
         <activity
             android:name=".activities.ShowArticleDetailActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".activities.ShowArticleListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.activities.ShowArticleListActivity" />
+            android:parentActivityName=".activities.ShowArticleListActivity">
         </activity>
         <activity
             android:name=".activities.FindArticleActivity"
@@ -71,7 +67,8 @@
             android:name=".activities.DeleteItemOverviewActivity"
             android:parentActivityName=".activities.PseudoLoginActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:launchMode="singleTop"/>
         <activity
             android:name=".activities.DeleteItemDetailActivity"
             android:parentActivityName=".activities.DeleteItemOverviewActivity"

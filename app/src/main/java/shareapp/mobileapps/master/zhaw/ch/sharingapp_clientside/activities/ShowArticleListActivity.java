@@ -23,6 +23,7 @@ public class ShowArticleListActivity extends AppCompatActivity implements DataLi
 
     private ItemviewAdapter itemviewAdapter;
     private ProgressDialog pd;
+    private boolean onCreateWasExecutedBefore = false;
     public static final String EXTRA_ITEM = "item";
 
     @Override
@@ -30,6 +31,7 @@ public class ShowArticleListActivity extends AppCompatActivity implements DataLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_article_list);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        onCreateWasExecutedBefore = true;
 
         DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
         itemviewAdapter = new ItemviewAdapter(this.getBaseContext());
@@ -76,7 +78,10 @@ public class ShowArticleListActivity extends AppCompatActivity implements DataLi
     @Override
     protected void onResume() {
         super.onResume();
-        DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
-        dataService.deliverAllItems(this);
+        if (!onCreateWasExecutedBefore) {
+            DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
+            dataService.deliverAllItems(this);
+        }
+        onCreateWasExecutedBefore = false;
     }
 }

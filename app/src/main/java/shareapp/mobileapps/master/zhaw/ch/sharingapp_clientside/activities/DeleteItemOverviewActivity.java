@@ -31,10 +31,8 @@ public class DeleteItemOverviewActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.deleteItemsListview);
         Intent intent = getIntent();
         Item[] items = (Item[]) intent.getSerializableExtra(PseudoLoginActivity.EXTRA_ITEMS);
-        if (items != null) {
-            itemviewAdapter.setItemList(items);
-            listView.setAdapter(itemviewAdapter);
-        }
+        itemviewAdapter.setItemList(items);
+        listView.setAdapter(itemviewAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
