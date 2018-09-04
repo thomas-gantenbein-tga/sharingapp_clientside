@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="3dp"
-        android:text="Verfügbare Gegenstände"
+        android:text="Geteilte Gegenstände"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         app:layout_constraintBottom_toTopOf="@+id/showArticlelistListview"
         app:layout_constraintLeft_toLeftOf="parent"

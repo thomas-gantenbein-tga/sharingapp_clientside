@@ -37,7 +37,6 @@ public class FindArticleActivity extends AppCompatActivity implements DataListen
     }
 
     public void onFindButtonClick(View view) {
-        String ownerId = String.format("ownerId=%s", ((TextView) findViewById(R.id.findArticleOwnerId)).getText().toString());
         String title = String.format("title=%s", ((TextView) findViewById(R.id.findArticleTitle)).getText().toString());
         Spinner spinner = findViewById(R.id.findArticleCategory);
         String category = String.format("category=%s", (String) spinner.getSelectedItem());
@@ -48,7 +47,7 @@ public class FindArticleActivity extends AppCompatActivity implements DataListen
         String telephone = String.format("telephone=%s", ((TextView) findViewById(R.id.findArticleTelephone)).getText().toString());
 
         DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
-        dataService.findItems(this, ownerId, title, category, description, address, city, zipCode, telephone);
+        dataService.findItems(this, title, category, description, address, city, zipCode, telephone);
     }
 
     @Override

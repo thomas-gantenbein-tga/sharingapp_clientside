@@ -151,7 +151,8 @@
             android:id="@+id/deleteItemDetailButton"
             style="@style/ButtonStyle"
             android:onClick="deleteItem"
-            android:text="@string/deleteButtonCaption" />
+            android:text="@string/deleteButtonCaption"
+            android:layout_marginBottom="8dp"/>
 
         <ProgressBar
             android:id="@+id/deleteItemDetailProgressBar"

@@ -115,6 +115,9 @@ public class ServerDataService implements DataService {
                 searchParams.add(param);
             }
         }
+        if (searchParams.isEmpty()) {
+            return;
+        }
         StringBuilder getParams = new StringBuilder();
         getParams.append("?").append(searchParams.get(0));
         for (int i = 1; i < searchParams.size(); i++) {
