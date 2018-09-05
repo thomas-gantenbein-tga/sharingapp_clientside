@@ -34,16 +34,11 @@ public class SearchResultsActivity extends AppCompatActivity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Item item = (Item) adapterView.getItemAtPosition(i);
                 Intent intent = new Intent( SearchResultsActivity.this, ShowArticleDetailActivity.class);
                 intent.putExtra(EXTRA_ITEM, item);
                 startActivity(intent);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                // aktuell nix zu tun
             }
         });
     }
