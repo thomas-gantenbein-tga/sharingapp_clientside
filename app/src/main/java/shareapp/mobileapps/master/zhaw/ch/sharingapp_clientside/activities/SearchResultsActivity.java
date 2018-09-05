@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.R;
@@ -11,6 +13,8 @@ import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Ite
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
 public class SearchResultsActivity extends AppCompatActivity {
+
+    public static final String EXTRA_ITEM = "item";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,21 @@ public class SearchResultsActivity extends AppCompatActivity {
         Item[] items = (Item[]) intent.getSerializableExtra(FindArticleActivity.EXTRA_ITEMS);
         itemviewAdapter.setItemList(items);
         listView.setAdapter(itemviewAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Item item = (Item) adapterView.getItemAtPosition(i);
+                Intent intent = new Intent( SearchResultsActivity.this, ShowArticleDetailActivity.class);
+                intent.putExtra(EXTRA_ITEM, item);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                // aktuell nix zu tun
+            }
+        });
     }
 
 }
