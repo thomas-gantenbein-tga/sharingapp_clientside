@@ -14,7 +14,9 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
-import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Constants;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.helpers.Constants;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.helpers.Endpoint;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.helpers.Status;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
 /**

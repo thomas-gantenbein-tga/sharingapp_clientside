@@ -1,4 +1,4 @@
-package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model;
+package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.helpers;
 
 /**
  * Convenience class to store messages used by implementations of DataService.

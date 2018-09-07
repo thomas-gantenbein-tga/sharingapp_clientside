@@ -2,6 +2,7 @@ package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling;
 
 import android.support.annotation.Nullable;
 
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.helpers.Status;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
 public interface DataService {

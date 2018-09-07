@@ -14,7 +14,7 @@ import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.R;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataListener;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataService;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.ServerDataService;
-import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Status;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.helpers.Status;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
 public class FindArticleActivity extends AppCompatActivity implements DataListener{

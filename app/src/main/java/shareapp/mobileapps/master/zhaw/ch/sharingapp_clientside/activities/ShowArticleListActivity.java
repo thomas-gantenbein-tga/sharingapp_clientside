@@ -13,9 +13,9 @@ import android.widget.Toast;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.R;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataListener;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataService;
-import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.ItemviewAdapter;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.ServerDataService;
-import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Status;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.helpers.ItemviewAdapter;
+import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.helpers.Status;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
 public class ShowArticleListActivity extends AppCompatActivity implements DataListener {

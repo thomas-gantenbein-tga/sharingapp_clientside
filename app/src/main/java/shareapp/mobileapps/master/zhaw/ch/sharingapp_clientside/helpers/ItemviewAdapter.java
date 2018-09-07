@@ -1,4 +1,4 @@
-package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling;
+package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.helpers;
 
 import android.content.Context;
 import android.view.LayoutInflater;

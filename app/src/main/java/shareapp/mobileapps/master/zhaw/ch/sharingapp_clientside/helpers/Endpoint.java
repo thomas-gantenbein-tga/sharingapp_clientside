@@ -1,4 +1,4 @@
-package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling;
+package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.helpers;
 
 /**
  * Convenience enum to store IPs for localhost and our actual appengine application.
