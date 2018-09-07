@@ -27,7 +27,6 @@ import java.util.Date;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.R;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataListener;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataService;
-import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Endpoint;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.ServerDataService;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Status;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
@@ -57,7 +56,7 @@ public class CreateNewArticleActivity extends AppCompatActivity implements DataL
     }
 
     public void onCreateButtonClick(View view) throws IOException {
-        DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
+        DataService dataService = new ServerDataService(this);
         String ownerId = ((TextView) findViewById(R.id.editTextArticleOwnerId)).getText().toString();
         String title = ((TextView) findViewById(R.id.editTextArticleTitle)).getText().toString();
         Spinner spinner = findViewById(R.id.spinnerArticleCategory);

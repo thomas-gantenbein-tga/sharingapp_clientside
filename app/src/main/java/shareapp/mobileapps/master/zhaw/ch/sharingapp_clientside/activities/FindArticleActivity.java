@@ -13,7 +13,6 @@ import android.widget.Toast;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.R;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataListener;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataService;
-import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Endpoint;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.ServerDataService;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Status;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
@@ -46,7 +45,7 @@ public class FindArticleActivity extends AppCompatActivity implements DataListen
         String zipCode = String.format("zipCode=%s", ((TextView) findViewById(R.id.findArticleZipCode)).getText().toString());
         String telephone = String.format("telephone=%s", ((TextView) findViewById(R.id.findArticleTelephone)).getText().toString());
 
-        DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
+        DataService dataService = new ServerDataService(this);
         dataService.findItems(this, title, category, description, address, city, zipCode, telephone);
     }
 

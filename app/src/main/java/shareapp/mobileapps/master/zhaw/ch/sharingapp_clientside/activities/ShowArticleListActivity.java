@@ -13,7 +13,6 @@ import android.widget.Toast;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.R;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataListener;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataService;
-import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Endpoint;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.ItemviewAdapter;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.ServerDataService;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Status;
@@ -33,7 +32,7 @@ public class ShowArticleListActivity extends AppCompatActivity implements DataLi
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         onCreateWasExecutedBefore = true;
 
-        DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
+        DataService dataService = new ServerDataService(this);
         itemviewAdapter = new ItemviewAdapter(this.getBaseContext());
 
         pd = new ProgressDialog(this);
@@ -79,7 +78,7 @@ public class ShowArticleListActivity extends AppCompatActivity implements DataLi
     protected void onResume() {
         super.onResume();
         if (!onCreateWasExecutedBefore) {
-            DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
+            DataService dataService = new ServerDataService(this);
             dataService.deliverAllItems(this);
         }
         onCreateWasExecutedBefore = false;

@@ -10,7 +10,6 @@ import android.widget.TextView;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.R;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataListener;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataService;
-import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Endpoint;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.ServerDataService;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Status;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
@@ -43,7 +42,7 @@ public class ShowArticleDetailActivity extends AppCompatActivity implements Data
                 .toString();
         address.setText(addressString);
         phone.setText(item.getTelephoneNumber());
-        DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
+        DataService dataService = new ServerDataService(this);
         dataService.deliverItemWithPictureOnly(this, item.getItemId());
     }
 

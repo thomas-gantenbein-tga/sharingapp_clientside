@@ -20,9 +20,9 @@ import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 public class ServerDataService implements DataService {
 
     private static final int SOCKET_TIMEOUT_MS = 5_000;
+    private static final Endpoint endpoint = Endpoint.LOCALHOST;
     private DataListener listener;
     private RequestQueue requestQueue;
-    private Endpoint endpoint;
     private final Response.Listener<NetworkResponse> onResponse =
             new Response.Listener<NetworkResponse>() {
                 @Override
@@ -42,8 +42,7 @@ public class ServerDataService implements DataService {
             };
 
 
-    public ServerDataService(AppCompatActivity activity, Endpoint endpoint) {
-        this.endpoint = endpoint;
+    public ServerDataService(AppCompatActivity activity) {
         requestQueue = Volley.newRequestQueue(activity);
     }
 

@@ -17,7 +17,6 @@ import android.widget.Toast;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.R;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataListener;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataService;
-import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Endpoint;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.ServerDataService;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Status;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Constants;
@@ -60,7 +59,7 @@ public class DeleteItemDetailActivity extends AppCompatActivity implements DataL
                 .toString();
         address.setText(addressString);
         phone.setText(item.getTelephoneNumber());
-        DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
+        DataService dataService = new ServerDataService(this);
         dataService.deliverItemWithPictureOnly(this, item.getItemId());
     }
 
@@ -70,7 +69,7 @@ public class DeleteItemDetailActivity extends AppCompatActivity implements DataL
         button.setText("");
         progressBar = findViewById(R.id.deleteItemDetailProgressBar);
         progressBar.setVisibility(View.VISIBLE);
-        DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
+        DataService dataService = new ServerDataService(this);
         timeAtDeleteAction = System.currentTimeMillis();
         dataService.deleteItem(this, itemId);
     }
