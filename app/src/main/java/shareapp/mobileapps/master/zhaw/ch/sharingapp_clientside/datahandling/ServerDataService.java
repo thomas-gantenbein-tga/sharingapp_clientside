@@ -17,6 +17,9 @@ import java.util.List;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Constants;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 
+/**
+ * Uses appengine (either local or cloud) to store, find, delete shared items.
+ */
 public class ServerDataService implements DataService {
 
     private static final int SOCKET_TIMEOUT_MS = 5_000;

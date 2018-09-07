@@ -22,6 +22,7 @@ public class ShowArticleListActivity extends AppCompatActivity implements DataLi
 
     private ItemviewAdapter itemviewAdapter;
     private ProgressDialog pd;
+    //following field makes sure that items are not loaded twice (in onCreate and onResume)
     private boolean onCreateWasExecutedBefore = false;
     public static final String EXTRA_ITEM = "item";
 

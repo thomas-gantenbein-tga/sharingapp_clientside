@@ -7,6 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+/**
+ * Used to create a custom spinner where the first element is hidden when the dropdown
+ * appears.
+ */
 public class CustomArrayAdapter extends ArrayAdapter<String>{
 
     public CustomArrayAdapter(@NonNull Context context, int resource, @NonNull String[] objects) {

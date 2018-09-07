@@ -45,6 +45,13 @@ public class DeleteItemOverviewActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Makes sure that the item is deleted not only from the DataService, but from the listview
+     * as well.
+     * @param requestCode
+     * @param resultCode: is set to Activity.Result_OK only when one of the items is deleted
+     * @param data: contains the ID of the deleted item
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE) {

@@ -8,6 +8,9 @@ import com.android.volley.toolbox.HttpHeaderParser;
 
 import java.io.UnsupportedEncodingException;
 
+/**
+ * Custom Request class to enable Volley requests to get status codes of HTTP responses.
+ */
 public class NetworkResponseRequest extends Request<NetworkResponse> {
     /** Lock to guard mListener as it is cleared on cancel() and read on delivery. */
     private final Object mLock = new Object();

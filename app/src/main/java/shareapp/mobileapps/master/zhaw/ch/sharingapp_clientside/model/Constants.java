@@ -1,5 +1,8 @@
 package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model;
 
+/**
+ * Convenience class to store messages used by implementations of DataService.
+ */
 public abstract class Constants {
     public static final String itemDeleted = "Gegenstand gelöscht";
     public static final String itemShared = "Gegenstand erfolgreich geteilt";

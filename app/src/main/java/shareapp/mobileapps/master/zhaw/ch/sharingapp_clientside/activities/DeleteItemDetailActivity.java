@@ -107,6 +107,10 @@ public class DeleteItemDetailActivity extends AppCompatActivity implements DataL
         }
     }
 
+    /*
+     * Just to make sure that the progress dialog remains open long enough for a user
+     * to recognize it as a progress dialogue (as opposed to a weird flickering of the screen).
+     * */
     private void waitIfTooFast() {
         long deleteDurationInMillis = System.currentTimeMillis() - timeAtDeleteAction;
         if (deleteDurationInMillis < MINIMUM_DELETE_DURATION_IN_MILLIS) {

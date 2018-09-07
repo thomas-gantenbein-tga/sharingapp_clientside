@@ -8,9 +8,6 @@ import java.util.UUID;
 
 public class Item implements Serializable {
     private String ownerId;
-
-
-
     private UUID itemId;
     private String title;
     private String category;

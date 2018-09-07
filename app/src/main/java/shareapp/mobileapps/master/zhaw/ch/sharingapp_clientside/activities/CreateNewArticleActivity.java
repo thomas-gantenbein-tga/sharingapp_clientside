@@ -68,7 +68,7 @@ public class CreateNewArticleActivity extends AppCompatActivity implements DataL
         String telephone = ((TextView) findViewById(R.id.editTextArticleTelephoneNumber)).getText().toString();
         String picture;
         if (currentPhotoFile != null) {
-            picture = getPhotoAsString(currentPhotoFile);
+            picture = getPhotoAsBase64String(currentPhotoFile);
         } else {
             picture = "";
         }
@@ -86,7 +86,7 @@ public class CreateNewArticleActivity extends AppCompatActivity implements DataL
 
     }
 
-    private String getPhotoAsString(String currentPhotoFile) throws IOException {
+    private String getPhotoAsBase64String(String currentPhotoFile) throws IOException {
         File imageFile = new File(currentPhotoFile);
         if (imageFile.exists()) {
             Bitmap scaledImage = scaleDown(BitmapFactory.decodeFile(currentPhotoFile), MAX_IMAGE_SIZE, true);
@@ -114,6 +114,10 @@ public class CreateNewArticleActivity extends AppCompatActivity implements DataL
         }
     }
 
+    /*
+    * Just to make sure that the progress dialog remains open long enough for a user
+    * to recognize it as a progress dialogue (as opposed to a weird flickering of the screen).
+    * */
     private void waitIfTooFast() {
         long saveDurationInMillis = System.currentTimeMillis() - timeAtSaveAction;
         if (saveDurationInMillis < MINIMUM_SAVE_DURATION_IN_MILLIS) {
