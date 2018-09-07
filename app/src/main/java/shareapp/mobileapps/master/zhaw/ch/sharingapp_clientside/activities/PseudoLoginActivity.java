@@ -12,7 +12,6 @@ import android.widget.Toast;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.R;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataListener;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataService;
-import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Endpoint;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.ServerDataService;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.Status;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
@@ -46,7 +45,7 @@ public class PseudoLoginActivity extends AppCompatActivity implements DataListen
     }
 
     public void getUserItems(View view) {
-        DataService dataService = new ServerDataService(this, Endpoint.LOCALHOST);
+        DataService dataService = new ServerDataService(this);
         TextView userNameTextField = findViewById(R.id.pseudoLoginUsername);
         String userName = userNameTextField.getText().toString();
         dataService.deliverUserItems(this, userName);
