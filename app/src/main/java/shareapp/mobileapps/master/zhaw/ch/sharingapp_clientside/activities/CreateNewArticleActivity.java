@@ -1,16 +1,21 @@
 package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.activities;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -93,7 +98,7 @@ public class CreateNewArticleActivity extends AppCompatActivity implements DataL
             ByteArrayOutputStream bmpStream = new ByteArrayOutputStream();
             scaledImage.compress(Bitmap.CompressFormat.JPEG, 30, bmpStream);
             byte[] scaledImageAsBytes = bmpStream.toByteArray();
-            return org.apache.commons.codec.binary.Base64.encodeBase64String(scaledImageAsBytes);
+            return Base64.encodeToString(scaledImageAsBytes,0);
         }
         return "";
     }
@@ -140,20 +145,27 @@ public class CreateNewArticleActivity extends AppCompatActivity implements DataL
     }
 
     public void takePhoto(View view) {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            File photoFile = null;
-            try {
-                photoFile = createImageFile();
-            } catch (IOException ex) {
-                // ignore
-            }
-            if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(this,
-                        "shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.activities.fileprovider",
-                        photoFile);
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+            //if not, ask the user for this permission
+            ActivityCompat.requestPermissions(CreateNewArticleActivity.this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},REQUEST_IMAGE_CAPTURE);
+            } else {
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                File photoFile = null;
+                try {
+                    photoFile = createImageFile();
+                } catch (IOException ex) {
+                    // ignore
+                }
+                if (photoFile != null) {
+                    Uri photoURI = FileProvider.getUriForFile(this,
+                            "shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.activities.fileprovider",
+                            photoFile);
+                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                }
             }
         }
     }
@@ -193,5 +205,13 @@ public class CreateNewArticleActivity extends AppCompatActivity implements DataL
         Bitmap newBitmap = Bitmap.createScaledBitmap(realImage, width,
                 height, filter);
         return newBitmap;
+    }
+
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                takePhoto(this.findViewById(R.id.createNewArticle));
+            }
+        }
     }
 }
