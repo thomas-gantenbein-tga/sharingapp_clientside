@@ -113,7 +113,7 @@ public class CreateNewArticleActivity extends AppCompatActivity implements DataL
         if (status == Status.SUCCESS) {
             Toast toast = Toast.makeText(context, message, duration);
             toast.show();
-            clearTextFields();
+            clearFields();
         } else if (status == Status.FAILURE){
             Toast toast = Toast.makeText(context, message, duration);
             toast.show();
@@ -135,7 +135,7 @@ public class CreateNewArticleActivity extends AppCompatActivity implements DataL
         }
     }
 
-    private void clearTextFields() {
+    private void clearFields() {
         ((TextView) findViewById(R.id.editTextArticleOwnerId)).setText("");
         ((TextView) findViewById(R.id.editTextArticleTitle)).setText("");
         ((TextView) findViewById(R.id.editTextArticleDescription)).setText("");
@@ -143,6 +143,8 @@ public class CreateNewArticleActivity extends AppCompatActivity implements DataL
         ((TextView) findViewById(R.id.editTextArticleCity)).setText("");
         ((TextView) findViewById(R.id.editTextArticleZipCode)).setText("");
         ((TextView) findViewById(R.id.editTextArticleTelephoneNumber)).setText("");
+        ((ImageView) findViewById(R.id.createArticleImageView)).setImageBitmap(null);
+        currentPhotoFile = null;
     }
 
     public void takePhoto(View view) {
