@@ -134,7 +134,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deleteArticleDetailPhone"
         app:layout_constraintVertical_bias="0"
-        app:layout_constraintVertical_chainStyle="spread" />
+        app:layout_constraintVertical_chainStyle="packed"/>
 
     <RelativeLayout
         android:id="@+id/deleteArticleDetailButtonsContainer"
@@ -144,8 +144,7 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/deleteArticleDetailPicture"
-        app:layout_constraintVertical_bias="0">
+        app:layout_constraintTop_toBottomOf="@id/deleteArticleDetailPicture">
 
         <Button
             android:id="@+id/deleteItemDetailButton"
