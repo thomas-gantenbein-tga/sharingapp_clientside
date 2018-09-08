@@ -3,11 +3,11 @@
 ## Über dieses Projekt
 Diese Android-App ist eine Art Schwarzes Brett für ein Quartier / eine Siedlung,
 über das Menschen Dinge verleihen und ausleihen können, die manchmal ganz
-praktisch wären, aber meist nur unbenutzt rumliegen: Grössere Werkzeuge oder Küchen-
-utensilien zum Beispiel.
+praktisch wären, aber meist nur unbenutzt rumliegen: Grössere Werkzeuge oder Küchenutensilien
+zum Beispiel.
 
 Für die Speicherung der Daten und den Austausch der Daten wird ein Rest-Service
-benutzt, der auf Google-Appengine deployt ist. Der Quellcode dieser []serverseitigen
+benutzt, der auf Google-Appengine deployt ist. Der Quellcode dieser [serverseitigen
 Anwendung](https://github.com/thomas-gantenbein-tga/sharingapp_serverside) ist ebenfalls frei 
 verfügbar auf Github.
 
