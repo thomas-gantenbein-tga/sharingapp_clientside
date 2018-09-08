@@ -25,7 +25,7 @@ import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
 public class ServerDataService implements DataService {
 
     private static final int SOCKET_TIMEOUT_MS = 5_000;
-    private static final Endpoint endpoint = Endpoint.GOOGLE_APP;
+    private static final Endpoint ENDPOINT = Endpoint.GOOGLE_APP;
     private DataListener listener;
     private RequestQueue requestQueue;
     private final Response.Listener<NetworkResponse> onResponse =
@@ -54,7 +54,7 @@ public class ServerDataService implements DataService {
     @Override
     public void deliverAllItems(DataListener listener) {
         this.listener = listener;
-        String urlString = new StringBuilder().append(endpoint.getUrlBasePath())
+        String urlString = new StringBuilder().append(ENDPOINT.getUrlBasePath())
                 .append("/").append("items").toString();
         Request<NetworkResponse> request = new NetworkResponseRequest(Request.Method.GET,
                 urlString, null, onResponse, onResponseError);
@@ -73,7 +73,7 @@ public class ServerDataService implements DataService {
         Gson gson = new Gson();
         String requestBody = gson.toJson(item, Item.class);
         String urlString = new StringBuilder()
-                .append(endpoint.getUrlBasePath())
+                .append(ENDPOINT.getUrlBasePath())
                 .append("/items/add")
                 .toString();
         Request<NetworkResponse> request = new NetworkResponseRequest(Request.Method.POST,
@@ -128,7 +128,7 @@ public class ServerDataService implements DataService {
             getParams.append("&").append(searchParams.get(i));
         }
         String urlString = new StringBuilder()
-                .append(endpoint.getUrlBasePath())
+                .append(ENDPOINT.getUrlBasePath())
                 .append("/items")
                 .append(getParams.toString())
                 .toString();
@@ -145,7 +145,7 @@ public class ServerDataService implements DataService {
     public void deliverUserItems(DataListener listener, String username) {
         this.listener = listener;
         String urlString = new StringBuilder()
-                .append(endpoint.getUrlBasePath())
+                .append(ENDPOINT.getUrlBasePath())
                 .append("/items/searchByOwner/")
                 .append(username)
                 .toString();
@@ -163,7 +163,7 @@ public class ServerDataService implements DataService {
     public void deleteItem(DataListener listener, String itemId) {
         this.listener = listener;
         String urlString = new StringBuilder()
-                .append(endpoint.getUrlBasePath())
+                .append(ENDPOINT.getUrlBasePath())
                 .append("/items/delete/")
                 .append(itemId)
                 .toString();
@@ -176,7 +176,7 @@ public class ServerDataService implements DataService {
     public void deliverItemWithPictureOnly(DataListener listener, String itemId) {
         this.listener = listener;
         String urlString = new StringBuilder()
-                .append(endpoint.getUrlBasePath())
+                .append(ENDPOINT.getUrlBasePath())
                 .append("/items/")
                 .append(itemId)
                 .append("/pictureonly")

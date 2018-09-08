@@ -1,11 +1,37 @@
-# Rudimentary client app
-## Showing that we can get data from "our" server
-* Methode receiveData in Klasse MainActivity wird aufgerufen, sobald alle Daten vom Server --
-  oder eben einer anderen Datenquelle hier sind. Hier kommt der Code hin, der die Daten
-  in der App sichtbar macht. 
-* Run with localhost: Start server locally. Use URL http://10.0.2.2:8080/items in ServerDataService. 
-  10.0.2.2 points to "localhost" of the machine on which the emulator is running.
-  See [Documentation](https://developer.android.com/studio/run/emulator-networking).
-* Run with Google App Engine: Use URL https://fabled-coder-210208.appspot.com/items in ServerDataService.
-* network_security_config.xml and android:networkSecurityConfig="@xml/network_security_config"
-  in Manifest necessary to allow cleartext connections to localhost.
+# TeilHabe -- Clientseitige Anwendung
+
+## Über dieses Projekt
+Diese Android-App ist eine Art Schwarzes Brett für ein Quartier / eine Siedlung,
+über das Menschen Dinge verleihen und ausleihen können, die manchmal ganz
+praktisch wären, aber meist nur unbenutzt rumliegen: Grössere Werkzeuge oder Küchen-
+utensilien zum Beispiel.
+
+Für die Speicherung der Daten und den Austausch der Daten wird ein Rest-Service
+benutzt, der auf Google-Appengine deployt ist. Der Quellcode dieser []serverseitigen
+Anwendung](https://github.com/thomas-gantenbein-tga/sharingapp_serverside) ist ebenfalls frei 
+verfügbar auf Github.
+
+## Features
+* Gegenstände lassen sich
+  * nur mit Text erstellen,
+  * zusätzlich mit Foto erstellen,
+  * anzeigen (alle in einer Liste),
+  * durchsuchen und
+  * löschen.
+* Die App läuft auch auf relativ alten Android-Versionen (bis Android 4.4 Kit-Kat).
+* Die Bilddaten werden erst geladen, wenn die Detailansicht zu einem Gegenstand
+  aufgerufen wird.
+* Die offensichtlichsten Fehler werden abgefangen und behandelt (zum Beispiel:
+  Server nicht erreichbar, keine Gegenstände gefunden, Fotoaufnahme abgebrochen).
+* Der Mechanismus, wie und wo Daten gespeichert werden, lässt sich relativ einfach
+  ändern, indem eine neue Klasse geschrieben wird, die das Interface `DataService` implementiert.
+* Über das Feld ENDPOINT in der Klasse `ServerDataService` lässt sich einfach steuern, ob
+  der lokale Entwicklungsserver oder der Google-Cloud-Server benutzt werden soll. 
+
+
+## Limitierungen
+* Keine Input-Validierung der Textfelder.
+* Keine Authentifizierung und Autorisierung implementiert.
+* Progress-Dialog ist nicht eben state-of-the-art, nur in `DeleteItemDetailActivity` ist die
+  aus UX-Sicht bessere ProgressBar eingesetzt.
+* Kein Menü eingefügt für schnelleres Navigieren zwischen den Activities.
