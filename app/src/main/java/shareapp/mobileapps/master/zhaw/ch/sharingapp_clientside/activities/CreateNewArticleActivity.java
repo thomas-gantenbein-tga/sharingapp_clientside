@@ -72,8 +72,13 @@ public class CreateNewArticleActivity extends AppCompatActivity implements DataL
         String zipCode = ((TextView) findViewById(R.id.editTextArticleZipCode)).getText().toString();
         String telephone = ((TextView) findViewById(R.id.editTextArticleTelephoneNumber)).getText().toString();
         String picture;
-        if (currentPhotoFile != null) {
-            picture = getPhotoAsBase64String(currentPhotoFile);
+        Bitmap bitmap = null;
+        if (currentPhotoFile != null && new File(currentPhotoFile).exists()) {
+            bitmap = BitmapFactory.decodeFile(currentPhotoFile);
+        }
+
+        if (bitmap != null) {
+            picture = getPhotoAsBase64String(bitmap);
         } else {
             picture = "";
         }
@@ -91,16 +96,12 @@ public class CreateNewArticleActivity extends AppCompatActivity implements DataL
 
     }
 
-    private String getPhotoAsBase64String(String currentPhotoFile) throws IOException {
-        File imageFile = new File(currentPhotoFile);
-        if (imageFile.exists()) {
-            Bitmap scaledImage = scaleDown(BitmapFactory.decodeFile(currentPhotoFile), MAX_IMAGE_SIZE, true);
-            ByteArrayOutputStream bmpStream = new ByteArrayOutputStream();
-            scaledImage.compress(Bitmap.CompressFormat.JPEG, 30, bmpStream);
-            byte[] scaledImageAsBytes = bmpStream.toByteArray();
-            return Base64.encodeToString(scaledImageAsBytes,0);
-        }
-        return "";
+    private String getPhotoAsBase64String(Bitmap bitmap) {
+        Bitmap scaledImage = scaleDown(bitmap, MAX_IMAGE_SIZE, true);
+        ByteArrayOutputStream bmpStream = new ByteArrayOutputStream();
+        scaledImage.compress(Bitmap.CompressFormat.JPEG, 30, bmpStream);
+        byte[] scaledImageAsBytes = bmpStream.toByteArray();
+        return Base64.encodeToString(scaledImageAsBytes,0);
     }
 
     @Override
