@@ -28,7 +28,7 @@ public class FindArticleActivity extends AppCompatActivity implements DataListen
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Spinner spinner = findViewById(R.id.findArticleCategory);
-        String[] r = getResources().getStringArray(R.array.articleCategory);
+        String[] r = getResources().getStringArray(R.array.articleCategoryWithEmpty);
         ArrayAdapter<String> adapter = new CustomArrayAdapter(this,
                 android.R.layout.simple_spinner_item, r);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

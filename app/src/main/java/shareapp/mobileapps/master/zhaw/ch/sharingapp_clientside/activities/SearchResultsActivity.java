@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.util.Arrays;
+
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.R;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.helpers.ItemviewAdapter;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model.Item;
@@ -29,6 +31,7 @@ public class SearchResultsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Item[] items = (Item[]) intent.getSerializableExtra(FindArticleActivity.EXTRA_ITEMS);
+        Arrays.sort(items);
         itemviewAdapter.setItemList(items);
         listView.setAdapter(itemviewAdapter);
 

@@ -10,6 +10,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.Arrays;
+
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.R;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataListener;
 import shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.datahandling.DataService;
@@ -61,6 +63,7 @@ public class ShowArticleListActivity extends AppCompatActivity implements DataLi
     public void receiveData(Item[] items, Status status, String message) {
         pd.cancel();
         if (status == Status.SUCCESS && items != null) {
+            Arrays.sort(items);
             itemviewAdapter.setItemList(items);
             ListView listView = findViewById(R.id.showArticlelistListview);
             listView.setAdapter(itemviewAdapter);

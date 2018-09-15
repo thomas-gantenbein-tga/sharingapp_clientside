@@ -2,12 +2,13 @@ package shareapp.mobileapps.master.zhaw.ch.sharingapp_clientside.model;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.annotation.NonNull;
 import android.util.Base64;
 
 import java.io.Serializable;
 import java.util.UUID;
 
-public class Item implements Serializable {
+public class Item implements Serializable, Comparable<Item> {
     private String ownerId;
     private UUID itemId;
     private String title;
@@ -76,5 +77,10 @@ public class Item implements Serializable {
         String encodedPictureString = this.getPicture();
         byte[] decodedPictureString = Base64.decode(encodedPictureString,0);
         return BitmapFactory.decodeByteArray(decodedPictureString, 0, decodedPictureString.length);
+    }
+
+    @Override
+    public int compareTo(@NonNull Item item) {
+        return this.getTitle().toLowerCase().compareTo(item.getTitle().toLowerCase());
     }
 }

@@ -9,6 +9,15 @@
         <item>Werkstatt</item>
         <item>Haushalt</item>
     </string-array>
+    <string-array name="articleCategoryWithEmpty">
+        <item>Kategorie wählen</item>
+        <item></item>
+        <item>Auto</item>
+        <item>Garten</item>
+        <item>Küche</item>
+        <item>Werkstatt</item>
+        <item>Haushalt</item>
+    </string-array>
     <string name="title_activity_show_article_detail">ShowArticleDetailActivity</string>
     <string name="title_activity_find_article">FindArticleActivity</string>
     <string name="title_activity_search_results">SearchResultsActivity</string>
